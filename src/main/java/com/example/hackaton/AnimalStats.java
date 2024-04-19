@@ -3,23 +3,32 @@ package com.example.hackaton;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.LinearGradient;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class AnimalStats {
     
-    static int panel_Height = 300;
-    static int panel_Width = 500;
+    public static int panel_Height = 300;
+    public static int panel_Width = 500;
     public static void statScreen(Animal animal, ArrayList<Animal> animals){
+        
+        HBox hBox = new HBox();
+        VBox vBox1 = new VBox();
+        VBox vBox2 = new VBox();
         
         StackPane root = new StackPane();
         Scene scene = new Scene(root, HelloApplication.WIDTH, HelloApplication.HEIGHT);
@@ -27,88 +36,100 @@ public class AnimalStats {
 
         Text text = new Text();
         text.setFont(Font.font(50));
-        VBox vBox1 = new VBox();
-        HBox hBox = new HBox();
-        HBox hBox1 = new HBox();
+        
 
-        text.setText(animal.getName() + "'s info details.");
+        text.setText(animal.name + "'s info details.");
 
         text.setTextAlignment(TextAlignment.CENTER);
         root.getChildren().addAll(text);
         root.setAlignment(text, Pos.TOP_CENTER);
 
         root.setPadding(new Insets(20));
-        ImageView imageView = new ImageView(animal.getImage());
+        ImageView imageView = null;
+        try {
+            imageView = new ImageView(new Image(new FileInputStream(animal.pathToImage)));
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
         imageView.setFitHeight(panel_Height);
         imageView.setFitWidth(panel_Width);
-        hBox.getChildren().add(imageView);
+        vBox1.getChildren().add(imageView);
 
-        ImageView  imageView1 = new ImageView(getAIphoto(animal));
-        imageView1.setFitHeight(panel_Height);
-        imageView1.setFitWidth(panel_Width);
-        hBox.getChildren().add(imageView1);
-
-        VBox vBox = new VBox();
+        
+        VBox dataBox = new VBox();
         ScrollPane scrollPane = new ScrollPane();
         Text name = new Text();
-        name.setText("Name: " + animal.getName());
+        name.setText("Name: " + animal.name);
         name.setFont(Font.font(30));
-        vBox.getChildren().add(name);
+        dataBox.getChildren().add(name);
         Text sex = new Text();
-        sex.setText("Sex: " + animal.getSex());
+        sex.setText("Sex: " + animal.sex);
         sex.setFont(Font.font(30));
-        vBox.getChildren().add(sex);
+        dataBox.getChildren().add(sex);
         Text age = new Text();
-        age.setText("Age: " + Integer.toString(animal.getAge()));
+        age.setText("Age: " + Integer.toString(animal.age));
         age.setFont(Font.font(30));
-        vBox.getChildren().add(age);
+        dataBox.getChildren().add(age);
         Text breed = new Text();
-        breed.setText("Breed: " + animal.getBreed());
+        breed.setText("Species: " + animal.species);
         breed.setFont(Font.font(30));
-        vBox.getChildren().add(breed);
+        dataBox.getChildren().add(breed);
         Text desc = new Text();
-        desc.setText("Why Am I right for you: " + animal.getDesc());
+        desc.setText("Why Am I right for you: " + animal.desc);
         desc.setFont(Font.font(30));
         desc.wrappingWidthProperty().bind(scrollPane.widthProperty());
-        vBox.getChildren().add(desc);
+        dataBox.getChildren().add(desc);
 
 
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-        scrollPane.setContent(vBox);
-        scrollPane.setPrefSize(panel_Width,panel_Height-80);
-        scrollPane.setMaxSize(panel_Width,panel_Height-80);
+        scrollPane.setContent(dataBox);
+        scrollPane.setPrefSize(panel_Width,panel_Height);
+        scrollPane.setMaxSize(panel_Width,panel_Height);
+        vBox1.getChildren().add(scrollPane);
 
 
-        VBox vBox2 = new VBox();
+        VBox sliderBox = new VBox();
+
+        Slider slider = new Slider("lmao", 5, 8, true, 0);
+        sliderBox.getChildren().add(slider);
         ScrollPane scrollPane2 = new ScrollPane();
-
-
         scrollPane2.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scrollPane2.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-        scrollPane2.setContent(vBox2);
-        scrollPane2.setPrefSize(panel_Width,panel_Height-80);
-        scrollPane2.setMaxSize(panel_Width,panel_Height-80);
-        hBox1.getChildren().add(scrollPane);
-        hBox1.getChildren().add(scrollPane2);
+        scrollPane2.setContent(sliderBox);
+        scrollPane2.setPrefSize(panel_Width,panel_Height*2);
+        scrollPane2.setMaxSize(panel_Width,panel_Height*2);
+        vBox2.getChildren().add(scrollPane2);
 
 
-        vBox1.setSpacing(35);
-        vBox.setPadding(new Insets(5));
-        hBox1.setSpacing(35);
-        hBox.setSpacing(35);
-        vBox1.getChildren().addAll(hBox,hBox1);
-        vBox1.setMaxHeight(panel_Height+panel_Height-80+45);
-        root.getChildren().add(vBox1);
-        vBox1.setMaxWidth(panel_Width*2+(20));
-        root.setAlignment(vBox1,Pos.BOTTOM_CENTER);
-        stage.setScene(scene);
-        stage.show();
+        StackPane stackPane10 = new StackPane();
+        stackPane10.setMaxSize(30,30);
+        Text text1 = new Text("←");
+        text1.setFont(Font.font(40));
+        stackPane10.getChildren().add(text1);
+        stackPane10.setOnMouseClicked(mouseEvent -> {
+            EndScreen.endScreen(animals);
+        });
+        root.getChildren().add(stackPane10);
+        root.setAlignment(stackPane10,Pos.TOP_LEFT);
+
+
+        hBox.getChildren().addAll(vBox1,vBox2);
+        hBox.setMaxHeight(panel_Height+panel_Height);
+        root.getChildren().add(hBox);
+        hBox.setMaxWidth(panel_Width*2+(20));
+        root.setAlignment(hBox,Pos.BOTTOM_CENTER);
+        HelloApplication.stage.setScene(scene);
+        HelloApplication.stage.show();
 
 
     }
 
     public static Image getAIphoto(Animal animal){
-        return animal.getImage();
+        try {
+            return new Image(new FileInputStream(animal.pathToImage));
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

@@ -20,7 +20,7 @@ import java.util.ArrayList;
 public class EndScreen {
     public static void endScreen(ArrayList<Animal> animals){
         for (int i = 0; i < 80; i++) {
-            Animal animal = new Animal("skibidi", 10,"dog","everyday","sigmaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            Animal animal = new Animal(true, "skibidi", "dog", 10, "img.png" ,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
             animals.add(animal);
         }
         //API call to images and data result
@@ -68,11 +68,16 @@ public class EndScreen {
             Animal animal = animals.get(i-1);
             StackPane stackPane = new StackPane();
             stackPane.setPrefSize(stackWidth,stackHeight);
-            ImageView imageView = new ImageView(animal.getImage());
+            ImageView imageView = null;
+            try {
+                imageView = new ImageView(new Image(new FileInputStream(animal.pathToImage)));
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            }
             imageView.setFitHeight(stackHeight-30);
             imageView.setFitWidth(stackWidth);
             stackPane.getChildren().add(imageView);
-            Text text1 = new Text(animal.getName());
+            Text text1 = new Text(animal.name);
             text1.setFont(Font.font(20));
             stackPane.getChildren().add(text1);
             stackPane.setAlignment(imageView,Pos.TOP_CENTER);
@@ -103,7 +108,7 @@ public class EndScreen {
         root.getChildren().add(scrollPane);
         root.setAlignment(Pos.BOTTOM_CENTER);
 
-        stage.setScene(scene);
-        stage.show();
+        HelloApplication.stage.setScene(scene);
+        HelloApplication.stage.show();
     }
 }
