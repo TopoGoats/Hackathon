@@ -13,6 +13,7 @@ public class HelloApplication extends Application {
     public static final int HEIGHT = 720;
     @Override
     public void start(Stage stage) throws IOException {
+        DatabaseController.connectToDatabase();
         Scene scene = new Scene(root, WIDTH, HEIGHT);
         stage.setTitle("Hello!");
         stage.setScene(scene);
