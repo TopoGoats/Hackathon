@@ -23,9 +23,8 @@ public class HelloApplication extends Application {
     public static Stage stage;
 
     @Override
-    public void start(Stage stage) throws IOException {
-        DatabaseController.connectToDatabase();
     public void start(Stage stage1) {
+        DatabaseController.connectToDatabase();
         stage = stage1;
         Scene scene = new Scene(root, WIDTH, HEIGHT);
 
@@ -65,9 +64,9 @@ public class HelloApplication extends Application {
             // break
             new SingleChoiceQuestion("Ile masz lat?", List.of("Poniżej 10", "11-17", "18-24", "Ponad 25")),
             new SingleChoiceQuestion("Czy masz już jakieś zwierzęta? Ile?", List.of("Nie", "1-2", "3-4", "5+")),
-            new SingleChoiceQuestion("Czy w twoim otoczeniu przebuwają dzieci?", List.of("Tak", "Nie")),
+            new SingleChoiceQuestion("Czy w twoim otoczeniu przebywają dzieci?", List.of("Tak", "Nie")),
             new SingleChoiceQuestion("Czego \"oczekujesz\" od zwierzaka?", List.of("Towarzystwa", "Motywacji do aktywności", "Chcę go szkolić", "Ma dobrze smakować")),
-            new MultipleChoiceQuestion("Wybierz pięć cech, które do ciebie pasują:", List.of("Odpowiedzialny", "Leniwy", "Pozytywny", "Ładwo się irytuję", "Zapominalski", "Aktywny", "Słomiany zapał", "Zdeterminowany", "Pochmurny", "Masło")),
+            new MultipleChoiceQuestion("Wybierz pięć cech, które do ciebie pasują:", List.of("Odpowiedzialny", "Leniwy", "Pozytywny", "Łatwo się irytuję", "Zapominalski", "Aktywny", "Słomiany zapał", "Zdeterminowany", "Pochmurny", "Masło")),
             // break
             new SliderQuestion("Jak oceniasz swoją odpowiedzialność?", "Nieodpowiedzialny", "Bardzo odpowiedzialny"),
             new SliderQuestion("Ile czasu jesteś w stanie poświęcić zwierzęciu?", "Prawie wcale", "Cały swój czas"),
