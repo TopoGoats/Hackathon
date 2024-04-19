@@ -4,10 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="682118fa-b16d-4fd2-a632-9207b0e67ecb" name="Changes" comment="feat: fix bug">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    <list default="true" id="682118fa-b16d-4fd2-a632-9207b0e67ecb" name="Changes" comment="resolved merge goofiness">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hackaton/Algorithms.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hackaton/Algorithms.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hackaton/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hackaton/Animal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hackaton/DatabaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hackaton/DatabaseController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hackaton/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hackaton/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hackaton/form/FormQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hackaton/form/FormQuestion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hackaton/form/MultipleChoiceQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hackaton/form/MultipleChoiceQuestion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hackaton/form/OpenEndedQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hackaton/form/OpenEndedQuestion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hackaton/form/SingleChoiceQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hackaton/form/SingleChoiceQuestion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hackaton/form/SliderQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hackaton/form/SliderQuestion.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,10 +47,20 @@
   }
 }]]></component>
   <component name="TaskManager">
+    <task id="LOCAL-00001" summary="resolved merge goofiness">
+      <option name="closed" value="true" />
+      <created>1713554876298</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1713554876298</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat: fix bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: fix bug" />
+    <MESSAGE value="resolved merge goofiness" />
+    <option name="LAST_COMMIT_MESSAGE" value="resolved merge goofiness" />
   </component>
 </project>

@@ -10,12 +10,11 @@ public class Animal {
     boolean fur;
 
     // Sliders
-    int caretTimeNeeded;
+    int careTimeNeeded;
     int resourcefulness;
     int competentWithAnimals;
     int impulsiveness;
     int income;
-    int dedication;
     int gardenSize;
 
     // Single choice
@@ -28,26 +27,22 @@ public class Animal {
     int qustionareeAge;
     int children;
     int animalsActivity;
+    int sex;
 
     // Traits
-    int responsibility;
-    int forgetfulness;
-    int shortLivedEnthusiasm;
-    int determined;
-    int optimistic;
+    String ownerTraits;
 
-    public Animal(boolean fur, String name, String species, int age, String pathToImage, int caretTimeNeeded, int resourcefulness, int competentWithAnimals, int impulsiveness, int income, int dedication, int gardenSize, int freeTime, int activeLifestyle, int livingArea, int currentAnimals, int houseType, int housemateCount, int qustionareeAge, int children, int animalsActivity, int responsibility, int forgetfulness, int shortLivedEnthusiasm, int determined, int optimistic) {
+    public Animal(boolean fur, String name, String species, int age, String pathToImage, int careTimeNeeded, int resourcefulness, int competentWithAnimals, int impulsiveness, int income, int gardenSize, int freeTime, int activeLifestyle, int livingArea, int currentAnimals, int houseType, int housemateCount, int qustionareeAge, int children, int animalsActivity, int sex, String ownerTraits) {
         this.fur = fur;
         this.name = name;
         this.species = species;
         this.age = age;
         this.pathToImage = pathToImage;
-        this.caretTimeNeeded = caretTimeNeeded;
+        this.careTimeNeeded = careTimeNeeded;
         this.resourcefulness = resourcefulness;
         this.competentWithAnimals = competentWithAnimals;
         this.impulsiveness = impulsiveness;
         this.income = income;
-        this.dedication = dedication;
         this.gardenSize = gardenSize;
         this.freeTime = freeTime;
         this.activeLifestyle = activeLifestyle;
@@ -58,10 +53,35 @@ public class Animal {
         this.qustionareeAge = qustionareeAge;
         this.children = children;
         this.animalsActivity = animalsActivity;
-        this.responsibility = responsibility;
-        this.forgetfulness = forgetfulness;
-        this.shortLivedEnthusiasm = shortLivedEnthusiasm;
-        this.determined = determined;
-        this.optimistic = optimistic;
+        this.sex = sex; //sex.
+        this.ownerTraits = ownerTraits;
+    }
+
+    @Override
+    public String toString() {
+        return "Animal{" +
+                "name='" + name + '\'' +
+                ", species='" + species + '\'' +
+                ", age=" + age +
+                ", pathToImage='" + pathToImage + '\'' +
+                ", fur=" + fur +
+                ", careTimeNeeded=" + careTimeNeeded +
+                ", resourcefulness=" + resourcefulness +
+                ", competentWithAnimals=" + competentWithAnimals +
+                ", impulsiveness=" + impulsiveness +
+                ", income=" + income +
+                ", gardenSize=" + gardenSize +
+                ", freeTime=" + freeTime +
+                ", activeLifestyle=" + activeLifestyle +
+                ", livingArea=" + livingArea +
+                ", currentAnimals=" + currentAnimals +
+                ", houseType=" + houseType +
+                ", housemateCount=" + housemateCount +
+                ", qustionareeAge=" + qustionareeAge +
+                ", children=" + children +
+                ", animalsActivity=" + animalsActivity +
+                ", sex=" + sex +
+                ", ownerTraits=" + ownerTraits   +
+                '}';
     }
 }

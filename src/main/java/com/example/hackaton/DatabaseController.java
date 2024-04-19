@@ -62,7 +62,7 @@ public class DatabaseController {
                         result.getString("species"),
                         result.getInt("age"),
                         result.getString("pathToImage"),
-                        result.getInt("caretTimeNeeded"),
+                        result.getInt("careTimeNeeded"),
                         result.getInt("resourcefulness"),
                         result.getInt("competentWithAnimals"),
                         result.getInt("impulsiveness"),
@@ -78,11 +78,7 @@ public class DatabaseController {
                         result.getInt("qustionareeAge"),
                         result.getInt("children"),
                         result.getInt("animalsActivity"),
-                        result.getInt("responsibility"),
-                        result.getInt("forgetfulness"),
-                        result.getInt("shortLivedEnthusiasm"),
-                        result.getInt("determined"),
-                        result.getInt("optimistic")
+                        result.getString("ownerTraits")
                 );
 
                 double similarity = Algorithms.calculateSimilarity(idealAnimal, animal);

@@ -20,4 +20,24 @@ public class MultipleChoiceQuestion extends VBox implements FormQuestion {
             this.getChildren().add(checkBox);
         }
     }
+
+    public String getActualAnswer() {
+        StringBuilder answer = new StringBuilder();
+        for (CheckBox checkBox : checkBoxes) {
+            if (checkBox.isSelected()) {
+                answer.append(checkBox.getText()).append(", ");
+            }
+        }
+        return answer.toString();
+    }
+
+    @Override
+    public int getAnswer() {
+        return -2137;
+    }
+
+    @Override
+    public String getInfluencedTrait() {
+        return "\033[0;31m" + "WARNING WARNING THIS SHOULDN'T BE VISIBLE" + "\033[0m";
+    }
 }
