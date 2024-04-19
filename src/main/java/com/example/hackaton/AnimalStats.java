@@ -75,7 +75,7 @@ public class AnimalStats {
         breed.setFont(Font.font(30));
         dataBox.getChildren().add(breed);
         Text desc = new Text();
-        desc.setText("Why Am I right for you: " + animal.desc);
+        desc.setText("Why Am I right for you: " + "I am a " + animal.species + " and I am " + animal.age + " years old. I am a " + animal + " and I am " + animal);
         desc.setFont(Font.font(30));
         desc.wrappingWidthProperty().bind(scrollPane.widthProperty());
         dataBox.getChildren().add(desc);
@@ -108,7 +108,7 @@ public class AnimalStats {
         text1.setFont(Font.font(40));
         stackPane10.getChildren().add(text1);
         stackPane10.setOnMouseClicked(mouseEvent -> {
-            EndScreen.endScreen(animals);
+            EndScreen.endScreen(HelloApplication.idealAnimal, animals);
         });
         root.getChildren().add(stackPane10);
         root.setAlignment(stackPane10,Pos.TOP_LEFT);

@@ -18,9 +18,9 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class EndScreen {
-    public static void endScreen(ArrayList<Animal> animals){
+    public static void endScreen(Animal idealAnimal, ArrayList<Animal> animals){
         for (int i = 0; i < 80; i++) {
-            Animal animal = new Animal(true, "skibidi", "dog", 10, "img.png" ,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+            Animal animal = new Animal(true, "skibidi", "dog", 10, "img.png" ,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"trait");
             animals.add(animal);
         }
         //API call to images and data result

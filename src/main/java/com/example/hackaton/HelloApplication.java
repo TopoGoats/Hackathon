@@ -163,6 +163,7 @@ public class HelloApplication extends Application {
                         );
                         System.out.println(idealAnimal.toString());
                     });
+                    EndScreen.endScreen(idealAnimal, new ArrayList<>());
                 });
                 buttonBox.getChildren().add(submitButton);
             }

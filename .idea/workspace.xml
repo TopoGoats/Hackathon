@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="682118fa-b16d-4fd2-a632-9207b0e67ecb" name="Changes" comment="resolved merge goofiness">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hackaton/Algorithms.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hackaton/Algorithms.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hackaton/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hackaton/Animal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hackaton/DatabaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hackaton/DatabaseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hackaton/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hackaton/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hackaton/form/FormQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hackaton/form/FormQuestion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hackaton/form/MultipleChoiceQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hackaton/form/MultipleChoiceQuestion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hackaton/form/OpenEndedQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hackaton/form/OpenEndedQuestion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hackaton/form/SingleChoiceQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hackaton/form/SingleChoiceQuestion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hackaton/form/SliderQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hackaton/form/SliderQuestion.java" afterDir="false" />
-    </list>
+    <list default="true" id="682118fa-b16d-4fd2-a632-9207b0e67ecb" name="Changes" comment="feat: added button answer funni and changed a bunch of shit" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,14 +27,14 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.HelloApplication.executor": "Run",
-    "git-widget-placeholder": "master",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "proofread"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;proofread&quot;
   }
-}]]></component>
+}</component>
   <component name="TaskManager">
     <task id="LOCAL-00001" summary="resolved merge goofiness">
       <option name="closed" value="true" />
@@ -55,12 +44,32 @@
       <option name="project" value="LOCAL" />
       <updated>1713554876298</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="feat: added button answer funni and changed a bunch of shit">
+      <option name="closed" value="true" />
+      <created>1713569260738</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1713569260738</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat: fix bug" />
     <MESSAGE value="resolved merge goofiness" />
-    <option name="LAST_COMMIT_MESSAGE" value="resolved merge goofiness" />
+    <MESSAGE value="feat: added button answer funni and changed a bunch of shit" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: added button answer funni and changed a bunch of shit" />
   </component>
 </project>
