@@ -1,67 +1,78 @@
 package com.example.hackaton;
 
+import javafx.scene.image.Image;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 public class Animal {
-    // Meta
-    String name;
-    String species;
-    int age;
-    String pathToImage;
-    boolean fur;
+    private Image image;
 
-    // Sliders
-    int caretTimeNeeded;
-    int resourcefulness;
-    int competentWithAnimals;
-    int impulsiveness;
-    int income;
-    int dedication;
-    int gardenSize;
+    private String name;
+    private int age;
+    private String breed;
+    private String sex;
+    private String desc;
 
-    // Single choice
-    int freeTime;
-    int activeLifestyle;
-    int livingArea;
-    int currentAnimals;
-    int houseType;
-    int housemateCount;
-    int qustionareeAge;
-    int children;
-    int animalsActivity;
-
-    // Traits
-    int responsibility;
-    int forgetfulness;
-    int shortLivedEnthusiasm;
-    int determined;
-    int optimistic;
-
-    public Animal(boolean fur, String name, String species, int age, String pathToImage, int caretTimeNeeded, int resourcefulness, int competentWithAnimals, int impulsiveness, int income, int dedication, int gardenSize, int freeTime, int activeLifestyle, int livingArea, int currentAnimals, int houseType, int housemateCount, int qustionareeAge, int children, int animalsActivity, int responsibility, int forgetfulness, int shortLivedEnthusiasm, int determined, int optimistic) {
-        this.fur = fur;
+    public Animal(String name, int age, String breed, String sex, String desc) {
+        try {
+            this.image = new Image(new FileInputStream("img.png"));
+        } catch (FileNotFoundException e) {
+            System.out.println("fuck");
+            throw new RuntimeException(e);
+        }
         this.name = name;
-        this.species = species;
         this.age = age;
-        this.pathToImage = pathToImage;
-        this.caretTimeNeeded = caretTimeNeeded;
-        this.resourcefulness = resourcefulness;
-        this.competentWithAnimals = competentWithAnimals;
-        this.impulsiveness = impulsiveness;
-        this.income = income;
-        this.dedication = dedication;
-        this.gardenSize = gardenSize;
-        this.freeTime = freeTime;
-        this.activeLifestyle = activeLifestyle;
-        this.livingArea = livingArea;
-        this.currentAnimals = currentAnimals;
-        this.houseType = houseType;
-        this.housemateCount = housemateCount;
-        this.qustionareeAge = qustionareeAge;
-        this.children = children;
-        this.animalsActivity = animalsActivity;
-        this.responsibility = responsibility;
-        this.forgetfulness = forgetfulness;
-        this.shortLivedEnthusiasm = shortLivedEnthusiasm;
-        this.determined = determined;
-        this.optimistic = optimistic;
+        this.breed = breed;
+        this.sex = sex;
+        this.desc = desc;
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getBreed() {
+        return breed;
+    }
+
+    public void setBreed(String breed) {
+        this.breed = breed;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 }
