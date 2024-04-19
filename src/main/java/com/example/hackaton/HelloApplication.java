@@ -13,6 +13,8 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.hackaton.ChatGPTController.chatGPT;
+
 public class HelloApplication extends Application {
     public static Pane root = new Pane();
     public static final int WIDTH = 1280;
@@ -33,6 +35,8 @@ public class HelloApplication extends Application {
             surveyRoots.add(surveyRoot);
             surveyScenes.add(new Scene(surveyRoot, WIDTH, HEIGHT));
         }
+
+//        System.out.println(chatGPT("give me the definition af a dog"));
 
         Button button = new Button("Start survey");
         button.setLayoutX(100);
