@@ -12,9 +12,11 @@ public class SliderQuestion extends VBox implements FormQuestion {
     Label questionLabel;
     Slider slider;
     Map<Double, String> labels;
+    String influencedTrait;
 
-    public SliderQuestion(String question, String minLabel, String maxLabel) {
+    public SliderQuestion(String question, String minLabel, String maxLabel, String influencedTrait) {
         questionLabel = new Label(question);
+        this.influencedTrait = influencedTrait;
 
         slider = new Slider(0, 10, 0);
 
@@ -46,5 +48,15 @@ public class SliderQuestion extends VBox implements FormQuestion {
 
 
         this.getChildren().addAll(questionLabel, slider);
+    }
+
+    @Override
+    public int getAnswer() {
+        return (int) slider.getValue();
+    }
+
+    @Override
+    public String getInfluencedTrait() {
+        return influencedTrait;
     }
 }
