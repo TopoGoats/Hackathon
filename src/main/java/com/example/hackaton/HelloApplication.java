@@ -203,6 +203,7 @@ public class HelloApplication extends Application {
             }
 
             if (surveyScenes.get(i).getRoot() instanceof Pane pane && pane.getChildren().getFirst() instanceof ScrollPane scrollPane && scrollPane.getContent() instanceof VBox vBox) {
+
                 vBox.getChildren().add(questionBox);
                 vBox.getChildren().add(buttonBox);
             }
