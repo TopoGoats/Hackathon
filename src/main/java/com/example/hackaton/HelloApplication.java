@@ -196,7 +196,7 @@ public class HelloApplication extends Application {
                                 traits.get("qustionareeAge"),
                                 traits.get("currentAnimals"),
                                 traits.get("children"),
-                                5,
+                                traits.get("careTimeNeeded"),
                                 traits.get("resourcefulness"),
                                 traits.get("competentWithAnimals"),
                                 traits.get("impulsiveness"),
@@ -205,8 +205,8 @@ public class HelloApplication extends Application {
                                 traits.get("freeTime"),
                                 traits.get("activeLifestyle"),
                                 traits.get("livingArea"),
-                                traits.get("currentAnimals"),
-                                traits.get("houseType"),
+                                        traits.get("houseType"),
+                                traits.get("animalsActivity"),
                                 ownerTraits[0]
                         );
                         System.out.println(idealAnimal.toString());

@@ -32,7 +32,11 @@ public class DatabaseController {
                         result.getInt("age"),
                         result.getInt("sex"),
                         result.getString("pathToImage"),
-                        result.getInt("caretTimeNeeded"),
+                        result.getInt("housemateCount"),
+                        result.getInt("qustionareeAge"),
+                        result.getInt("currentAnimals"),
+                        result.getInt("children"),
+                        result.getInt("careTimeNeeded"),
                         result.getInt("resourcefulness"),
                         result.getInt("competentWithAnimals"),
                         result.getInt("impulsiveness"),
@@ -41,12 +45,8 @@ public class DatabaseController {
                         result.getInt("freeTime"),
                         result.getInt("activeLifestyle"),
                         result.getInt("livingArea"),
-                        result.getInt("currentAnimals"),
                         result.getInt("houseType"),
-                        result.getInt("housemateCount"),
-                        result.getInt("qustionareeAge"),
-                        result.getInt("children"),
-                        0,
+                        result.getInt("animalsActivity"),
                         result.getString("ownerTraits")
                 );
 
