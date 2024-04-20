@@ -25,7 +25,7 @@ public class Algorithms {
         similarity += 1*Math.pow(idealAnimal.qustionareeAge - currentAnimal.qustionareeAge, 2);
         similarity += 1*Math.pow(idealAnimal.children - currentAnimal.children, 2);
         similarity += 1*Math.pow(idealAnimal.animalsActivity - currentAnimal.animalsActivity, 2);
-        similarity += 2*calculateTraitsSimilarity(idealAnimal.ownerTraits, currentAnimal.ownerTraits);
+        similarity += 2*Math.pow(calculateTraitsSimilarity(idealAnimal.ownerTraits, currentAnimal.ownerTraits), 2);
         return Math.sqrt(similarity);
     }
 
@@ -37,7 +37,7 @@ public class Algorithms {
         int idealSetLength = idealSet.size();
         idealSet.removeAll(currentTraitsList);
         currentSet.removeAll(idealTraitsList);
-        return 10 - (idealSet.size()/idealSetLength*5 + currentSet.size()*5/idealSetLength) * 2;
+        return (idealSet.size()/idealSetLength*5 + currentSet.size()*5/idealSetLength) * 2;
     }
 
 }
