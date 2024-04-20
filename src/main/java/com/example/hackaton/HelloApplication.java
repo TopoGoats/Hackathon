@@ -30,8 +30,28 @@ public class HelloApplication extends Application {
     public static HashMap<String, Integer> traits = new HashMap<>();
     public static Animal idealAnimal;
 
+    public static HashMap<String, String> haszkomora = new HashMap<String, String>();
+
     @Override
     public void start(Stage stage1) {
+        haszkomora.put("housemateCount", "Liczba Domowników");
+        haszkomora.put("qustionareeAge", "Kompatybilność z Twoim Wiekiem");
+        haszkomora.put("currentAnimals", "Kompatybilność z Twoimi Zwierzętami");
+        haszkomora.put("children", "Kompatybilność z Dziećmi");
+        haszkomora.put("careTimeNeeded", "Potrzeba Opieki");
+        haszkomora.put("resourcefulness", "Twoja Zaradność");
+        haszkomora.put("competentWithAnimals", "Twoje Kompetencje ze Zwierzętami");
+        haszkomora.put("impulsiveness", "Twoja Impulsywność");
+        haszkomora.put("income", "Twój Dochód");
+        haszkomora.put("gardenSize", "Twój Rozmiar Ogrodu");
+        haszkomora.put("freeTime", "Twój Czas Wolny");
+        haszkomora.put("activeLifestyle", "Twoja Aktywność");
+        haszkomora.put("livingArea", "Twoja Domowa Przestrzeń");
+        haszkomora.put("houseType", "Rodzaj Twojego Domu");
+        haszkomora.put("animalsActivity", "Żywość Zwierzięcia");
+
+
+
         root.setAlignment(javafx.geometry.Pos.CENTER);
         root.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/styles.css")).toExternalForm());
         stage1.setResizable(false);
@@ -157,6 +177,10 @@ public class HelloApplication extends Application {
                                 "Dog",
                                 10,
                                 "image.png",
+                                traits.get("housemateCount"),
+                                traits.get("qustionareeAge"),
+                                traits.get("currentAnimals"),
+                                traits.get("children"),
                                 traits.get("careTimeNeeded"),
                                 traits.get("resourcefulness"),
                                 traits.get("competentWithAnimals"),
@@ -166,11 +190,7 @@ public class HelloApplication extends Application {
                                 traits.get("freeTime"),
                                 traits.get("activeLifestyle"),
                                 traits.get("livingArea"),
-                                traits.get("currentAnimals"),
                                 traits.get("houseType"),
-                                traits.get("housemateCount"),
-                                traits.get("qustionareeAge"),
-                                traits.get("children"),
                                 traits.get("animalsActivity"),
                                 traits.get("preferredSex"),
                                 ownerTraits[0]
