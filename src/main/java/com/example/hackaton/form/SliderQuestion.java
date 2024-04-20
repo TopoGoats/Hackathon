@@ -1,5 +1,6 @@
 package com.example.hackaton.form;
 
+import com.jfoenix.controls.JFXSlider;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.VBox;
@@ -10,15 +11,18 @@ import java.util.Map;
 
 public class SliderQuestion extends VBox implements FormQuestion {
     Label questionLabel;
-    Slider slider;
+    JFXSlider slider;
     Map<Double, String> labels;
     String influencedTrait;
 
-    public SliderQuestion(String question, String minLabel, String maxLabel, String influencedTrait) {
+    public SliderQuestion(String question, String minLabel, String maxLabel) {
+        this.getStyleClass().add("question");
+        this.setAlignment(javafx.geometry.Pos.CENTER);
         questionLabel = new Label(question);
         this.influencedTrait = influencedTrait;
+        questionLabel.getStyleClass().add("question-label");
 
-        slider = new Slider(0, 10, 0);
+        slider = new JFXSlider(0, 10, 0);
 
         labels = new HashMap<>();
         labels.put(0.0, minLabel);
@@ -29,6 +33,8 @@ public class SliderQuestion extends VBox implements FormQuestion {
         slider.setMajorTickUnit(1);
         slider.setMinorTickCount(0);
         slider.setSnapToTicks(true);
+        slider.valueProperty().addListener((obs, oldval, newVal) ->
+                slider.setValue(newVal.intValue()));
 
         slider.setLabelFormatter(new StringConverter<>() {
             @Override
