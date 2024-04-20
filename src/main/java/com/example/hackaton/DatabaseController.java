@@ -2,6 +2,7 @@ package com.example.hackaton;
 
 import java.sql.*;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class DatabaseController {
     static Connection connection;
@@ -51,21 +52,38 @@ public class DatabaseController {
                 );
 
                 double similarity = Algorithms.calculateSimilarity(idealAnimal, animal);
-                if (similarity < 1000) {
+                if (similarity < 17.5) {
                     animals.put(animal, similarity);
                 }
-                Object[] a = animals.entrySet().toArray();
-                Arrays.sort(a, new Comparator() {
-                    public int compare(Object o1, Object o2) {
-                        return ((Map.Entry<Animal, Double>) o2).getValue()
-                                .compareTo(((Map.Entry<Animal, Double>) o1).getValue());
-                    }
-                });
-                for (Object e : a) {
-                    System.out.println(((Map.Entry<Animal, Double>) e).getKey() + " : "
-                            + ((Map.Entry<Animal, Double>) e).getValue());
+
+
+            }
+            double min=1000;
+            double max=0;
+            for(double num: animals.values()){
+                if(num<min){
+                    min = num;
+                }
+                if(num>max){
+                    max = num;
                 }
             }
+            double finalMin = min;
+            double finalMax = max;
+            animals.values().removeIf(v -> v>((finalMin + finalMax)/2));
+            Map<Animal, Double> animalsSorted = animals.entrySet()
+                    .stream()
+                    .sorted(Map.Entry.comparingByValue())
+                    .collect(Collectors.toMap(
+                            Map.Entry::getKey,
+                            Map.Entry::getValue,
+                            (oldValue, newValue) -> oldValue,
+                            LinkedHashMap::new
+                    )).reversed();
+
+            return animalsSorted;
+
+
         } catch (SQLException e) {
             System.out.println(e.getMessage() +  e.getCause()+" XDDD");
         }
@@ -73,5 +91,8 @@ public class DatabaseController {
         return animals;
     }
 
+
 }
+
+
 

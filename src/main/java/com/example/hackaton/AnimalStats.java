@@ -61,23 +61,23 @@ public class AnimalStats {
         VBox dataBox = new VBox();
         ScrollPane scrollPane = new ScrollPane();
         Text name = new Text();
-        name.setText("Name: " + animal.name);
+        name.setText("Imię: " + animal.name);
         name.setFont(Font.font(30));
         dataBox.getChildren().add(name);
         Text sex = new Text();
-        sex.setText("Sex: " + animal.sex);
+        sex.setText("Płeć: " + (animal.sex==0?" Samiec":"Samica"));
         sex.setFont(Font.font(30));
         dataBox.getChildren().add(sex);
         Text age = new Text();
-        age.setText("Age: " + Integer.toString(animal.age));
+        age.setText("Wiek: " + Integer.toString(animal.age));
         age.setFont(Font.font(30));
         dataBox.getChildren().add(age);
         Text breed = new Text();
-        breed.setText("Species: " + animal.species);
+        breed.setText("Gatunek: " + animal.species);
         breed.setFont(Font.font(30));
         dataBox.getChildren().add(breed);
         Text desc = new Text();
-        desc.setText("Why Am I right for you: " + "I am a " + animal.species + " and I am " + animal.age + " years old.");
+        desc.setText("Czemu jestem dla Ciebie idealny?: " + "I am a " + animal.species + " and I am " + animal.age + " years old.");
         desc.setFont(Font.font(30));
         desc.wrappingWidthProperty().bind(scrollPane.widthProperty());
         dataBox.getChildren().add(desc);
@@ -114,7 +114,6 @@ public class AnimalStats {
             if(i>=6&&i<=9){
                 Slider slider = null;
                 try {
-                    System.out.println((fieldsIdeal[i].get(idealAnimal).toString())+ " lmao");
                     slider = new Slider(HelloApplication.haszkomora.get(fieldsIdeal[i].getName().toString()), Integer.parseInt(fieldsIdeal[i].get(idealAnimal).toString()), Integer.parseInt(fields[i].get(animal).toString()), true, 0.0);
                 } catch (IllegalAccessException e) {
                     throw new RuntimeException(e);
@@ -124,7 +123,6 @@ public class AnimalStats {
             }else{
                 Slider slider = null;
                 try {
-                    System.out.println((fieldsIdeal[i].get(idealAnimal).toString())+ " lmao");
                     slider = new Slider(HelloApplication.haszkomora.get(fieldsIdeal[i].getName().toString()), Integer.parseInt(fieldsIdeal[i].get(idealAnimal).toString()), Integer.parseInt(fields[i].get(animal).toString()), false, 0.0);
                 } catch (IllegalAccessException e) {
                     throw new RuntimeException(e);

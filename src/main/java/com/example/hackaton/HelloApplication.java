@@ -209,15 +209,13 @@ public class HelloApplication extends Application {
                                 traits.get("animalsActivity"),
                                 ownerTraits[0]
                         );
-                        System.out.println(idealAnimal.toString());
                     });
                     Map<Animal, Double> map = DatabaseController.getMatchingAnimals(idealAnimal);
+
+
                     ArrayList<Animal> array = new ArrayList<>();
                     for(Animal animal1: map.keySet()){
                         array.addFirst(animal1);
-                    }
-                    for(double num: map.values()){
-                        System.out.println(num+ " lol`1");
                     }
                     EndScreen.endScreen(idealAnimal,array);
                 });
