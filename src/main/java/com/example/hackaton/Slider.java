@@ -37,7 +37,7 @@ public class Slider extends VBox {
         Rectangle rectangle = new Rectangle(AnimalStats.panel_Width-70,AnimalStats.panel_Height/10,linearGradient);
         Rectangle rectangle1 = new Rectangle(10,(AnimalStats.panel_Height/10)+10);
         double posX;
-        if(isMoreBad){
+        if(!isMoreBad){
             posX = -rectangle1.getLayoutBounds().getWidth()/2 + text10.getLayoutBounds().getWidth() + rectangle.getTranslateX() + rectangle.getWidth()*(10 - (Math.abs(ideal-current)))/10;
         }else{
             if(current > ideal){
