@@ -59,13 +59,10 @@ public class EndScreen {
         HBox currentHBOX = new HBox();
         currentHBOX.setSpacing(20);
         for (int i = 1; i < animals.size()+1; i++) {
-            System.out.println("lol");
             Animal animal = animals.get(i-1);
             StackPane stackPane = new StackPane();
             stackPane.setPrefSize(stackWidth,stackHeight);
             ImageView imageView = null;
-            System.out.println(animal.pathToImage);
-
 
             try {
                 imageView = new ImageView(new Image(new FileInputStream(animal.pathToImage)));

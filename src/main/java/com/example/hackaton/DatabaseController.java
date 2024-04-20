@@ -2,6 +2,7 @@ package com.example.hackaton;
 
 import java.sql.*;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class DatabaseController {
     static Connection connection;
@@ -54,22 +55,21 @@ public class DatabaseController {
                 if (similarity < 1000) {
                     animals.put(animal, similarity);
                 }
-                Object[] a = animals.entrySet().toArray();
-                Arrays.sort(a, new Comparator() {
-                    public int compare(Object o1, Object o2) {
-                        return ((Map.Entry<Animal, Double>) o2).getValue()
-                                .compareTo(((Map.Entry<Animal, Double>) o1).getValue());
-                    }
-                });
-                for (Object e : a) {
-                    System.out.println(((Map.Entry<Animal, Double>) e).getKey() + " : "
-                            + ((Map.Entry<Animal, Double>) e).getValue());
-                }
             }
+            Map<Animal, Double> animalsSorted = animals.entrySet()
+                    .stream()
+                    .sorted(Map.Entry.comparingByValue())
+                    .collect(Collectors.toMap(
+                            Map.Entry::getKey,
+                            Map.Entry::getValue,
+                            (oldValue, newValue) -> oldValue,
+                            LinkedHashMap::new
+                    )).reversed();
+
+            return animalsSorted;
         } catch (SQLException e) {
             System.out.println(e.getMessage() +  e.getCause()+" XDDD");
         }
-
         return animals;
     }
 
