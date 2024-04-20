@@ -15,7 +15,7 @@ public class SingleChoiceQuestion extends VBox implements FormQuestion {
     List<RadioButton> radioButtons = new ArrayList<>();
     String influencedTrait;
 
-    public SingleChoiceQuestion(String question, List<String> options) {
+    public SingleChoiceQuestion(String question, List<String> options, String influencedTrait) {
         this.getStyleClass().add("question");
         questionLabel = new Label(question);
         questionLabel.getStyleClass().add("question-label");

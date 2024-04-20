@@ -15,7 +15,7 @@ public class SliderQuestion extends VBox implements FormQuestion {
     Map<Double, String> labels;
     String influencedTrait;
 
-    public SliderQuestion(String question, String minLabel, String maxLabel) {
+    public SliderQuestion(String question, String minLabel, String maxLabel, String influencedTrait) {
         this.getStyleClass().add("question");
         this.setAlignment(javafx.geometry.Pos.CENTER);
         questionLabel = new Label(question);
