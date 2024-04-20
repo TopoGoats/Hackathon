@@ -52,10 +52,25 @@ public class DatabaseController {
                 );
 
                 double similarity = Algorithms.calculateSimilarity(idealAnimal, animal);
-                if (similarity < 1000) {
+                if (similarity < 17.5) {
                     animals.put(animal, similarity);
                 }
+
+
             }
+            double min=1000;
+            double max=0;
+            for(double num: animals.values()){
+                if(num<min){
+                    min = num;
+                }
+                if(num>max){
+                    max = num;
+                }
+            }
+            double finalMin = min;
+            double finalMax = max;
+            animals.values().removeIf(v -> v>((finalMin + finalMax)/2));
             Map<Animal, Double> animalsSorted = animals.entrySet()
                     .stream()
                     .sorted(Map.Entry.comparingByValue())
@@ -67,11 +82,17 @@ public class DatabaseController {
                     )).reversed();
 
             return animalsSorted;
+
+
         } catch (SQLException e) {
             System.out.println(e.getMessage() +  e.getCause()+" XDDD");
         }
+
         return animals;
     }
 
+
 }
+
+
 
