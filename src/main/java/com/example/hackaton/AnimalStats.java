@@ -21,6 +21,7 @@ import java.io.FileNotFoundException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
+import static com.example.hackaton.HelloApplication.HEIGHT;
 import static com.example.hackaton.HelloApplication.traits;
 
 public class AnimalStats {
@@ -66,6 +67,8 @@ public class AnimalStats {
         VBox scrollBox = new VBox();
         scrollBox.setSpacing(30);
         ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setPrefWidth(leftPanel.getWidth());
+        scrollPane.setMaxHeight(HEIGHT*10);
 
         HBox textBox = new HBox();
         Text name = new Text();
@@ -123,9 +126,6 @@ public class AnimalStats {
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scrollPane.setContent(scrollBox);
         // TODO: Change this
-        scrollPane.setPrefSize(panel_Width,HelloApplication.HEIGHT);
-        scrollPane.setMaxSize(panel_Width,HelloApplication.HEIGHT);
-        scrollPane.setMinSize(panel_Width,HelloApplication.HEIGHT);
         leftPanel.getChildren().add(scrollPane);
 
 

@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="682118fa-b16d-4fd2-a632-9207b0e67ecb" name="Changes" comment="fix merge goofy">
+    <list default="true" id="682118fa-b16d-4fd2-a632-9207b0e67ecb" name="Changes" comment="wip, generating the prompts kinda works, need to shorten it tho">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hackaton/EndScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hackaton/EndScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hackaton/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hackaton/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hackaton/AnimalStats.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hackaton/AnimalStats.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,27 +16,53 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="survey-form" />
+        <entry key="$PROJECT_DIR$" value="chatgpt_integration" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;AZebysWiedzial&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/TopoGoats/Hackathon.git&quot;,
+    &quot;accountId&quot;: &quot;7231cf09-8fee-40a9-99f9-5c9c582dc746&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2fLjmD3KBLvcW6p1WXaJlnw4QBO" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Wiktor/IdeaProjects/Hackathon&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;proofread&quot;
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.HelloApplication.executor": "Run",
+    "Application.Unnamed.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Wiktor/IdeaProjects/Hackathon/src/main/resources/photos",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "proofread"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Wiktor\IdeaProjects\Hackathon\src\main\resources\photos" />
       <recent name="C:\Users\Wiktor\IdeaProjects\Hackathon" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Anna\IdeaProjects\Hackathon" />
     </key>
   </component>
   <component name="RunManager">
@@ -50,6 +74,7 @@
       </method>
     </configuration>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task id="LOCAL-00001" summary="resolved merge goofiness">
       <option name="closed" value="true" />
@@ -75,7 +100,36 @@
       <option name="project" value="LOCAL" />
       <updated>1713574701407</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="feat: added button answer funni and changed a bunch of shit">
+      <created>1713585560316</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1713585560316</updated>
+    </task>
+    <task id="LOCAL-00005" summary="feat: added button answer funni and changed a bunch of shit">
+      <created>1713586207793</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1713586207793</updated>
+    </task>
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="682118fa-b16d-4fd2-a632-9207b0e67ecb" name="Changes" comment="feat: added interpreting the open ended questions&#10;fix: fixed the setup chatgpt prompt" />
+      <created>1713587413619</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1713587413619</updated>
+    </task>
+    <task id="LOCAL-00006" summary="wip, generating the prompts kinda works, need to shorten it tho">
+      <option name="closed" value="true" />
+      <created>1713594981859</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1713594981859</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -92,9 +146,10 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat: fix bug" />
     <MESSAGE value="resolved merge goofiness" />
-    <MESSAGE value="feat: added button answer funni and changed a bunch of shit" />
     <MESSAGE value="database update i guess" />
     <MESSAGE value="fix merge goofy" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix merge goofy" />
+    <MESSAGE value="feat: added button answer funni and changed a bunch of shit" />
+    <MESSAGE value="wip, generating the prompts kinda works, need to shorten it tho" />
+    <option name="LAST_COMMIT_MESSAGE" value="wip, generating the prompts kinda works, need to shorten it tho" />
   </component>
 </project>
