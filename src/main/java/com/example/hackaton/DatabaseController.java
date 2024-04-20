@@ -1,9 +1,10 @@
 package com.example.hackaton;
 
 import java.sql.*;
-import java.util.*;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class DatabaseController {
     static Connection connection;
@@ -33,11 +34,12 @@ public class DatabaseController {
                         result.getString("species"),
                         result.getInt("age"),
                         result.getString("pathToImage"),
-                        result.getInt("caretTimeNeeded"),
+                        result.getInt("careTimeNeeded"),
                         result.getInt("resourcefulness"),
                         result.getInt("competentWithAnimals"),
                         result.getInt("impulsiveness"),
                         result.getInt("income"),
+                        result.getInt("dedication"),
                         result.getInt("gardenSize"),
                         result.getInt("freeTime"),
                         result.getInt("activeLifestyle"),
@@ -52,36 +54,14 @@ public class DatabaseController {
                 );
 
                 double similarity = Algorithms.calculateSimilarity(idealAnimal, animal);
-                if (similarity <1000000) {
+                if (similarity < 1000) {
                     animals.put(animal, similarity);
                 }
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        System.out.println(animals.toString());
+
         return animals;
-    }
-    public static Map<Animal, Double> sortByValue(Map<Animal, Double> hm)
-    {
-        // Create a list from elements of HashMap
-        List<Map.Entry<Animal, Double> > list =
-                new LinkedList<Map.Entry<Animal, Double> >(hm.entrySet());
-
-        // Sort the list
-        Collections.sort(list, new Comparator<Map.Entry<Animal, Double> >() {
-            public int compare(Map.Entry<Animal, Double> o1,
-                               Map.Entry<Animal, Double> o2)
-            {
-                return (o1.getValue()).compareTo(o2.getValue());
-            }
-        });
-
-        // put data from sorted list to hashmap
-        HashMap<Animal, Double> temp = new LinkedHashMap<Animal, Double>();
-        for (Map.Entry<Animal, Double> aa : list) {
-            temp.put(aa.getKey(), aa.getValue());
-        }
-        return temp;
     }
 }
