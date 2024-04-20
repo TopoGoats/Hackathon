@@ -86,7 +86,7 @@ public class EndScreen {
                     BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
             int num = i-1;
             stackPane.setOnMouseClicked(mouseEvent -> {
-                AnimalStats.statScreen(animals.get(num), animals);
+                AnimalStats.statScreen(idealAnimal,animals.get(num), animals);
             });
             if(i%10==0&&i!=1){
                 currentHBOX.getChildren().add(stackPane);

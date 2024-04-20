@@ -35,23 +35,24 @@ public class Slider extends VBox {
         text1.setTextAlignment(TextAlignment.CENTER);
         LinearGradient linearGradient = LinearGradient.valueOf("from 0% 0% to 100% 0%, red  0%, orange 33%, yellowgreen 66%, green 100%");
         Rectangle rectangle = new Rectangle(AnimalStats.panel_Width-70,AnimalStats.panel_Height/10,linearGradient);
+        Rectangle rectangle1 = new Rectangle(10,(AnimalStats.panel_Height/10)+10);
         double posX;
         if(isMoreBad){
-            posX = text10.getLayoutBounds().getWidth() + rectangle.getTranslateX() + rectangle.getWidth()*(10 - (Math.abs(ideal-current)))/10;
+            posX = -rectangle1.getLayoutBounds().getWidth()/2 + text10.getLayoutBounds().getWidth() + rectangle.getTranslateX() + rectangle.getWidth()*(10 - (Math.abs(ideal-current)))/10;
         }else{
             if(current > ideal){
-                posX = text10.getLayoutBounds().getWidth() +rectangle.getTranslateX() + rectangle.getWidth();
+                posX = -rectangle1.getLayoutBounds().getWidth()/2 + text10.getLayoutBounds().getWidth() +rectangle.getTranslateX() + rectangle.getWidth();
             }else{
-                posX = text10.getLayoutBounds().getWidth() +rectangle.getTranslateX() + rectangle.getWidth()*(10 - (Math.abs(ideal-current)))/10;
+                posX = -rectangle1.getLayoutBounds().getWidth()/2 + text10.getLayoutBounds().getWidth() +rectangle.getTranslateX() + rectangle.getWidth()*(10 - (Math.abs(ideal-current)))/10;
             }
         }
-        Rectangle rectangle1 = new Rectangle(10,(AnimalStats.panel_Height/10)+10);
         rectangle1.setTranslateX(posX);
-        rectangle1.setTranslateY(-rectangle.getHeight()-(Math.abs(rectangle.getHeight()-rectangle1.getHeight())/2));
+        rectangle1.setTranslateY(-10-rectangle.getHeight()-(Math.abs(rectangle.getHeight()-rectangle1.getHeight())/2));
         HBox hBox = new HBox();
         hBox.getChildren().addAll(text10,rectangle,text20);
         this.getChildren().add(hBox);
         this.getChildren().add(rectangle1);
+        this.setSpacing(10);
 
     }
 }
