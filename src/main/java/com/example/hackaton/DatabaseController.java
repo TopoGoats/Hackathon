@@ -54,7 +54,7 @@ public class DatabaseController {
                 );
 
                 double similarity = Algorithms.calculateSimilarity(idealAnimal, animal);
-                if (similarity > 7) {
+                if (similarity < 1000) {
                     animals.put(animal, similarity);
                 }
             }

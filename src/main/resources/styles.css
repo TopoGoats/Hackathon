@@ -16,9 +16,23 @@
 .jfx-button {
     -jfx-button-type: FLAT;
     -fx-background-color: #7F00FF;
-    -fx-font-size: 16;
+    -fx-border-width: 2;
+    -fx-border-radius: 4;
+    -fx-border-color: #7F00FF;
+    -fx-font-size: 18;
     -fx-font-weight: bold;
     -fx-text-fill: white;
+}
+
+.jfx-secondary-button {
+    -jfx-button-type: FLAT;
+    -fx-background-color: white;
+    -fx-border-width: 2;
+    -fx-border-radius: 4;
+    -fx-text-fill: #7F00FF;
+    -fx-border-color: #7F00FF;
+    -fx-font-size: 18;
+    -fx-font-weight: bold;
 }
 
 .jfx-slider > .track {
@@ -39,14 +53,16 @@
     -fx-opacity: 0;
 }
 
+
 .question {
-    -fx-padding: 16
+    -fx-font-size: 16;
+    -fx-padding: 28;
 }
 
 .question-label {
-    -fx-font-size: 16;
+    -fx-font-size: 24;
     -fx-font-weight: bold;
-    -fx-padding: 0 0 8 0;
+    -fx-padding: 0 0 10 0;
 }
 
 .jfx-check-box {
@@ -67,7 +83,9 @@
 .main-button {
     -fx-font-size: 24;
     -fx-font-weight: bold;
-    -fx-border-radius: 10;
+    -fx-border-radius: 15;
+    -fx-border-color: #7F00FF;
+    -fx-border-width: 3;
     -fx-background-color: #7F00FF;
     -jfx-button-type: RAISED;
 }
@@ -88,5 +106,11 @@
 }
 
 .answer {
-    -fx-padding: 2;
+    -fx-padding: 4;
+}
+
+.progress-text {
+    -fx-fill: grey;
+    -fx-font-size: 16;
+    -fx-font-weight: bold;
 }

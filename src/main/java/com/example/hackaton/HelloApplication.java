@@ -143,6 +143,7 @@ public class HelloApplication extends Application {
             VBox questionBox = new VBox();
             HBox progressBarBox = new HBox();
             Text progressText = new Text("Strona " + (i + 1) + " z 5");
+            progressText.getStyleClass().add("progress-text");
             progressBarBox.getChildren().add(progressText);
             progressBarBox.setAlignment(javafx.geometry.Pos.CENTER);
             questionBox.getChildren().add(progressBarBox);
@@ -160,6 +161,7 @@ public class HelloApplication extends Application {
             buttonBox.setAlignment(javafx.geometry.Pos.CENTER);
             if (i > 0) {
                 JFXButton prevButton = new JFXButton("Poprzedni");
+                prevButton.getStyleClass().add("jfx-secondary-button");
                 prevButton.setOnAction(event -> {
                     stage.setScene(surveyScenes.get(index[0] - 1));
                 });

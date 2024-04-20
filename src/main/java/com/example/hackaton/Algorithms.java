@@ -37,7 +37,7 @@ public class Algorithms {
         int idealSetLength = idealSet.size();
         idealSet.removeAll(currentTraitsList);
         currentSet.removeAll(idealTraitsList);
-        return 10 - (idealSet.size()/idealSetLength*5 + currentSet.size()*5/idealSetLength) * 2;
+        return (idealSet.size()/idealSetLength*5 + currentSet.size()*5/idealSetLength) * 2;
     }
 
 }

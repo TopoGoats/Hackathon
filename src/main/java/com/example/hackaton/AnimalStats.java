@@ -92,6 +92,7 @@ public class AnimalStats {
 
 
         VBox sliderBox = new VBox();
+        sliderBox.setSpacing(10);
         sliderBox.setPadding(new Insets(15,0,0,0));
         Text text100 = new Text("Kompatybilność Ciebie i Zwierzęcia");
         text100.setWrappingWidth(panel_Width);
@@ -118,6 +119,7 @@ public class AnimalStats {
                 } catch (IllegalAccessException e) {
                     throw new RuntimeException(e);
                 }
+
                 sliderBox.getChildren().add(slider);
             }else{
                 Slider slider = null;
