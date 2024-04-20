@@ -18,13 +18,14 @@ import javafx.stage.Stage;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 public class AnimalStats {
     
     public static int panel_Height = 300;
     public static int panel_Width = 500;
-    public static void statScreen(Animal animal, ArrayList<Animal> animals){
+    public static void statScreen(Animal idealAnimal, Animal animal, ArrayList<Animal> animals){
         
         HBox hBox = new HBox();
         VBox vBox1 = new VBox();
@@ -91,8 +92,38 @@ public class AnimalStats {
 
         VBox sliderBox = new VBox();
 
-        Slider slider = new Slider("lmao", 5, 8, true, 0);
-        sliderBox.getChildren().add(slider);
+        Field[] fields = animal.getClass().getDeclaredFields();
+
+        Field[] fieldsIdeal = idealAnimal.getClass().getDeclaredFields();
+
+        try {
+            System.out.println(fieldsIdeal[1].get(idealAnimal).toString()+ " XDDD");
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+
+        for (int i = 6; i < fields.length-1; i++) {
+            if(i>=6&&i<=9){
+                Slider slider = null;
+                try {
+                    System.out.println((fieldsIdeal[i].get(idealAnimal).toString())+ " lmao");
+                    slider = new Slider(fieldsIdeal[i].getName().toString(), Integer.parseInt(fieldsIdeal[i].get(idealAnimal).toString()), Integer.parseInt(fields[i].get(animal).toString()), true, 0.0);
+                } catch (IllegalAccessException e) {
+                    throw new RuntimeException(e);
+                }
+                sliderBox.getChildren().add(slider);
+            }else{
+                Slider slider = null;
+                try {
+                    System.out.println((fieldsIdeal[i].get(idealAnimal).toString())+ " lmao");
+                    slider = new Slider(fieldsIdeal[i].getName().toString(), Integer.parseInt(fieldsIdeal[i].get(idealAnimal).toString()), Integer.parseInt(fields[i].get(animal).toString()), false, 0.0);
+                } catch (IllegalAccessException e) {
+                    throw new RuntimeException(e);
+                }
+                sliderBox.getChildren().add(slider);
+            }
+        }
+
         ScrollPane scrollPane2 = new ScrollPane();
         scrollPane2.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scrollPane2.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
