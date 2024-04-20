@@ -1,5 +1,10 @@
 package com.example.hackaton;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public class Algorithms {
     public static double calculateSimilarity(Animal idealAnimal, Animal currentAnimal) {
         if (!idealAnimal.fur && currentAnimal.fur) return 0;
@@ -20,8 +25,19 @@ public class Algorithms {
         similarity += 1*Math.pow(idealAnimal.qustionareeAge - currentAnimal.qustionareeAge, 2);
         similarity += 1*Math.pow(idealAnimal.children - currentAnimal.children, 2);
         similarity += 1*Math.pow(idealAnimal.animalsActivity - currentAnimal.animalsActivity, 2);
-        // similarity += 1*Math.pow(idealAnimal.ownerTraits - currentAnimal.ownerTraits, 2);
-        // TODO: Implement ownerTraits
+        similarity += 2*calculateTraitsSimilarity(idealAnimal.ownerTraits, currentAnimal.ownerTraits);
         return Math.sqrt(similarity);
     }
+
+    public static int calculateTraitsSimilarity(String idealTraits, String currentTraits) {
+        List<String> idealTraitsList = Arrays.asList(idealTraits.split(", "));
+        List<String> currentTraitsList = Arrays.asList(currentTraits.split(", "));
+        Set idealSet = new HashSet<>(idealTraitsList);
+        Set currentSet = new HashSet<>(currentTraitsList);
+        int idealSetLength = idealSet.size();
+        idealSet.removeAll(currentTraitsList);
+        currentSet.removeAll(idealTraitsList);
+        return 10 - (idealSet.size()/idealSetLength*5 + currentSet.size()*5/idealSetLength) * 2;
+    }
+
 }
