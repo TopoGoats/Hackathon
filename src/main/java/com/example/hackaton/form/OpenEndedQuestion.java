@@ -9,12 +9,15 @@ public class OpenEndedQuestion extends VBox implements FormQuestion {
     JFXTextArea textArea;
 
     public OpenEndedQuestion(String question) {
+        VBox wrapper = new VBox();
+        textArea = new JFXTextArea();
+        wrapper.getChildren().add(textArea);
+        wrapper.getStyleClass().add("our-answers-box");
         this.getStyleClass().add("question");
         questionLabel = new Label(question);
         questionLabel.getStyleClass().add("question-label");
-        textArea = new JFXTextArea();
 
-        this.getChildren().addAll(questionLabel, textArea);
+        this.getChildren().addAll(questionLabel, wrapper);
     }
 
     @Override

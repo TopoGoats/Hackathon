@@ -24,13 +24,16 @@ public class SingleChoiceQuestion extends VBox implements FormQuestion {
 
         group = new ToggleGroup();
 
+        VBox answersBox = new VBox();
         for (String option : options) {
             JFXRadioButton radioButton = new JFXRadioButton(option);
             radioButton.getStyleClass().add("answer");
             radioButton.setToggleGroup(group);
             radioButtons.add(radioButton);
-            this.getChildren().add(radioButton);
+            answersBox.getChildren().add(radioButton);
         }
+        answersBox.getStyleClass().add("our-answers-box");
+        this.getChildren().add(answersBox);
     }
 
     @Override

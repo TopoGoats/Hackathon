@@ -1,17 +1,21 @@
 package com.example.hackaton;
 
+import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.shape.Box;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 
+import java.awt.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.lang.reflect.Field;
@@ -20,61 +24,71 @@ import java.util.ArrayList;
 import static com.example.hackaton.HelloApplication.traits;
 
 public class AnimalStats {
-    
-    public static int panel_Height = 300;
-    public static int panel_Width = 500;
+
+    public static int panel_Width = HelloApplication.WIDTH/2 - 80;
     public static void statScreen(Animal idealAnimal, Animal animal, ArrayList<Animal> animals){
         
-        HBox hBox = new HBox();
-        VBox vBox1 = new VBox();
-        VBox vBox2 = new VBox();
-        
-        StackPane root = new StackPane();
+        HBox root = new HBox();
+        root.setSpacing(20);
         Scene scene = new Scene(root, HelloApplication.WIDTH, HelloApplication.HEIGHT);
+        scene.getStylesheets().add("styles.css");
 
+        HBox heading = new HBox();
+        heading.setSpacing(10);
+        heading.setAlignment(Pos.CENTER_LEFT);
+        Text icon = new Text("←");
+        icon.setFont(Font.font(40));
+        icon.setOnMouseClicked(_ -> EndScreen.endScreen(HelloApplication.idealAnimal, animals));
+        heading.getChildren().add(icon);
         Text text = new Text();
-        text.setFont(Font.font(50));
-        
-
+        text.getStyleClass().add("heading");
         text.setText(animal.name + "'s info details.");
+        heading.getChildren().add(text);
+        VBox leftPanel = new VBox();
+        leftPanel.setSpacing(10);
+        leftPanel.setPadding(new Insets(20, 40, 20, 20));
+        leftPanel.getChildren().add(heading);
+        root.getChildren().add(leftPanel);
 
-        text.setTextAlignment(TextAlignment.CENTER);
-        root.getChildren().addAll(text);
-        StackPane.setAlignment(text, Pos.TOP_CENTER);
-
-        root.setPadding(new Insets(20));
         ImageView imageView;
         try {
             imageView = new ImageView(new Image(new FileInputStream(animal.pathToImage)));
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
-        imageView.setFitHeight(panel_Height);
-        imageView.setFitWidth(panel_Width);
-        vBox1.getChildren().add(imageView);
+        imageView.setFitWidth(HelloApplication.WIDTH/2 - 80);
+        imageView.setPreserveRatio(true);
+        leftPanel.getChildren().add(imageView);
 
-        
-        VBox dataBox = new VBox();
+        HBox dataBox = new HBox();
+        dataBox.setSpacing(15);
+        dataBox.setAlignment(Pos.CENTER_LEFT);
+        VBox scrollBox = new VBox();
+        scrollBox.setSpacing(30);
         ScrollPane scrollPane = new ScrollPane();
+
+        HBox textBox = new HBox();
         Text name = new Text();
         name.setText("Imię: " + animal.name);
-        name.setFont(Font.font(30));
-        dataBox.getChildren().add(name);
+        name.getStyleClass().add("subheading");
+        textBox.getChildren().add(name);
+        textBox.setPadding(new Insets(0,20,0,0));
+        dataBox.getChildren().add(textBox);
         Text sex = new Text();
         sex.setText("Płeć: " + (animal.sex==0?" Samiec":"Samica"));
-        sex.setFont(Font.font(30));
+        name.getStyleClass().add("data-text");
         dataBox.getChildren().add(sex);
         Text age = new Text();
         age.setText("Wiek: " + animal.age);
-        age.setFont(Font.font(30));
+        name.getStyleClass().add("data-text");
         dataBox.getChildren().add(age);
         Text breed = new Text();
         breed.setText("Gatunek: " + animal.species);
-        breed.setFont(Font.font(30));
+        name.getStyleClass().add("data-text");
         dataBox.getChildren().add(breed);
         Text desc = new Text();
         desc.setText("Czemu jestem dla Ciebie idealny?: " + "I am a " + animal.species + " and I am " + animal.age + " years old.");
-        desc.setFont(Font.font(30));
+        name.getStyleClass().add("data-text");
         StringBuilder prompt = new StringBuilder();
 
     prompt.append(" - ile czasu potrzebuje zwierzę - 0 oznacza prawie nic, 10 oznacza dużo").append(animal.careTimeNeeded);
@@ -96,35 +110,37 @@ public class AnimalStats {
         desc.setFont(Font.font(12));
 
         desc.wrappingWidthProperty().bind(scrollPane.widthProperty());
-        dataBox.getChildren().add(desc);
+        scrollBox.getChildren().add(dataBox);
+        scrollBox.getChildren().add(desc);
 
+        VBox rightPanel = new VBox();
+        root.getChildren().add(rightPanel);
+        rightPanel.setPadding(new Insets(20, 20, 20, 20));
+        rightPanel.setSpacing(10);
+        rightPanel.setAlignment(Pos.CENTER);
 
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-        scrollPane.setContent(dataBox);
-        scrollPane.setPrefSize(panel_Width,panel_Height);
-        scrollPane.setMaxSize(panel_Width,panel_Height);
-        vBox1.getChildren().add(scrollPane);
+        scrollPane.setContent(scrollBox);
+        // TODO: Change this
+        scrollPane.setPrefSize(panel_Width,HelloApplication.HEIGHT);
+        scrollPane.setMaxSize(panel_Width,HelloApplication.HEIGHT);
+        scrollPane.setMinSize(panel_Width,HelloApplication.HEIGHT);
+        leftPanel.getChildren().add(scrollPane);
 
 
-        VBox sliderBox = new VBox();
-        sliderBox.setSpacing(10);
-        sliderBox.setPadding(new Insets(15,0,0,0));
-        Text text100 = new Text("Kompatybilność Ciebie i Zwierzęcia");
-        text100.setWrappingWidth(panel_Width);
-        text100.setTextAlignment(TextAlignment.CENTER);
-        text100.setFont(Font.font("", FontWeight.BOLD, 25));
-        sliderBox.getChildren().add(text100);
+
+        Text heading2 = new Text("Kompatybilność Twoja\n i Zwierzęcia");
+        heading2.getStyleClass().add("smaller-heading");
+        heading2.setTextAlignment(TextAlignment.CENTER);
+        rightPanel.getChildren().add(heading2);
+
+        VBox scrollBox2 = new VBox();
+        scrollBox2.setSpacing(10);
+        scrollBox2.setPadding(new Insets(10, 10, 10, 10));
 
         Field[] fields = animal.getClass().getDeclaredFields();
-
         Field[] fieldsIdeal = idealAnimal.getClass().getDeclaredFields();
-
-        try {
-            System.out.println(fieldsIdeal[1].get(idealAnimal).toString()+ " XDDD");
-        } catch (IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
 
         for (int i = 6; i < fields.length-1; i++) {
             if(i<=9){
@@ -135,40 +151,25 @@ public class AnimalStats {
                     throw new RuntimeException(e);
                 }
 
-                sliderBox.getChildren().add(slider);
-            }else{
+                scrollBox2.getChildren().add(slider);
+            } else {
                 Slider slider;
                 try {
                     slider = new Slider(HelloApplication.haszkomora.get(fieldsIdeal[i].getName()), Integer.parseInt(fieldsIdeal[i].get(idealAnimal).toString()), Integer.parseInt(fields[i].get(animal).toString()), false);
                 } catch (IllegalAccessException e) {
                     throw new RuntimeException(e);
                 }
-                sliderBox.getChildren().add(slider);
+                scrollBox2.getChildren().add(slider);
             }
         }
 
         ScrollPane scrollPane2 = new ScrollPane();
         scrollPane2.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scrollPane2.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-        scrollPane2.setContent(sliderBox);
-        scrollPane2.setPrefSize(panel_Width,panel_Height*2);
-        scrollPane2.setMaxSize(panel_Width,panel_Height*2);
-        vBox2.getChildren().add(scrollPane2);
+        scrollPane2.setContent(scrollBox2);
+        // TODO: fix this
+        rightPanel.getChildren().add(scrollPane2);
 
-        StackPane stackPane10 = new StackPane();
-        stackPane10.setMaxSize(30,30);
-        Text text1 = new Text("←");
-        text1.setFont(Font.font(40));
-        stackPane10.getChildren().add(text1);
-        stackPane10.setOnMouseClicked(_ -> EndScreen.endScreen(HelloApplication.idealAnimal, animals));
-        root.getChildren().add(stackPane10);
-        StackPane.setAlignment(stackPane10,Pos.TOP_LEFT);
-
-        hBox.getChildren().addAll(vBox1,vBox2);
-        hBox.setMaxHeight(panel_Height+panel_Height);
-        root.getChildren().add(hBox);
-        hBox.setMaxWidth(panel_Width*2+(20));
-        StackPane.setAlignment(hBox,Pos.BOTTOM_CENTER);
         HelloApplication.stage.setScene(scene);
         HelloApplication.stage.show();
     }

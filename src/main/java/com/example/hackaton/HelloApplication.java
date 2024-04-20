@@ -121,7 +121,7 @@ public class HelloApplication extends Application {
             new SingleChoiceQuestion("Czego \"oczekujesz\" od zwierzaka?", List.of( "Ma dobrze smakować", "Towarzystwa", "Motywacji do aktywności", "Chcę go szkolić"), "animalsActivity"),
             new SingleChoiceQuestion("Jaką płeć preferujesz?", List.of("Samiec", "Samica", "Obojętnie", "Inne"), "preferredSex"),
             // break
-            new SingleChoiceQuestion("Czy masz alergię sierść zwierząt?", List.of("Tak", "Nie"), "isAllergic"),
+            new SingleChoiceQuestion("Czy masz alergię na sierść zwierząt?", List.of("Tak", "Nie"), "isAllergic"),
             new MultipleChoiceQuestion("Wybierz pięć cech, które do ciebie pasują:", List.of("Odpowiedzialny", "Leniwy", "Pozytywny", "Łatwo się irytuję", "Zapominalski", "Aktywny", "Słomiany zapał", "Zdeterminowany", "Optymistyczny", "Masło")),
             new SliderQuestion("Ile czasu jesteś w stanie poświęcić zwierzęciu?", "Prawie wcale", "Cały swój czas", "careTimeNeeded"),
             new SliderQuestion("Jak zaradny jesteś?", "Niezaradny", "Bardzo zaradny", "resourcefulness"),
@@ -148,7 +148,7 @@ public class HelloApplication extends Application {
             progressText.getStyleClass().add("progress-text");
             progressBarBox.getChildren().add(progressText);
             progressBarBox.setAlignment(javafx.geometry.Pos.CENTER);
-            questionBox.getChildren().add(progressBarBox);
+            questionBox.setAlignment(javafx.geometry.Pos.CENTER);
 
             for (int j = 0; j < 5; j++) {
                 questionBox.getChildren().add((Node) questions.get(i * 5 + j));
@@ -246,6 +246,7 @@ public class HelloApplication extends Application {
 
                     Map<Animal, Double> map = DatabaseController.getMatchingAnimals(idealAnimal);
 
+
                     ArrayList<Animal> array = new ArrayList<>();
                     for(Animal animal1: map.keySet()){
                         array.addFirst(animal1);
@@ -256,6 +257,7 @@ public class HelloApplication extends Application {
             }
 
             if (surveyScenes.get(i).getRoot() instanceof Pane pane && pane.getChildren().getFirst() instanceof ScrollPane scrollPane && scrollPane.getContent() instanceof VBox vBox) {
+                vBox.getChildren().add(progressBarBox);
                 vBox.getChildren().add(questionBox);
                 vBox.getChildren().add(buttonBox);
             }
@@ -282,7 +284,6 @@ public class HelloApplication extends Application {
         traits.put("children", -1);
         traits.put("animalsActivity", -1);
         traits.put("preferredSex", -1);
-        traits.put("isAllergic", -1);
 
         // Traits
         traits.put("responsibility", -1);

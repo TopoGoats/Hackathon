@@ -46,11 +46,11 @@ public class EndScreen {
         textBox.getChildren().addAll(text1, text2);
 
         if (animals.isEmpty()) {
-            text1.setText("We didn't find any animals to fit your criteria.");
-            text2.setText("We are sorry ;(.");
+            text1.setText("Niestety nie znalezlismy zadnych rezultatow.");
+            text2.setText("Przepraszamy :(");
         } else {
-            text1.setText("Here are the animals that match your criteria.");
-            text2.setText("Click on the animal to learn more!");
+            text1.setText("Oto dopasowane zwierzeta!");
+            text2.setText("Kliknij na zwierze, by sie mu przyjrzec.");
 
         }
         vBox.getChildren().add(textBox);

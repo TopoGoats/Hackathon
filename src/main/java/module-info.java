@@ -5,6 +5,7 @@ module com.example.hackaton {
     requires org.xerial.sqlitejdbc;
     requires org.slf4j;
     requires com.jfoenix;
+    requires java.desktop;
 
 
     opens com.example.hackaton to javafx.fxml;

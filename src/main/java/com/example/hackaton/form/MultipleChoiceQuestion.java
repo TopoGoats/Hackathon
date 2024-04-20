@@ -19,7 +19,9 @@ public class MultipleChoiceQuestion extends VBox implements FormQuestion {
         questionLabel.getStyleClass().add("question-label");
         this.getChildren().addAll(questionLabel);
         VBox vBox1 = new VBox();
+        vBox1.getStyleClass().add("our-answers-box");
         VBox vBox2 = new VBox();
+        vBox2.getStyleClass().add("our-answers-box");
 
         for (String option : options) {
             if (vBox1.getChildren().size() < 5) {
