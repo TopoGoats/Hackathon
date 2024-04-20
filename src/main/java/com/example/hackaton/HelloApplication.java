@@ -142,7 +142,7 @@ public class HelloApplication extends Application {
         for (int i = 0; i < 5; i++) {
             VBox questionBox = new VBox();
             HBox progressBarBox = new HBox();
-            Text progressText = new Text("Page " + (i + 1) + " of 5");
+            Text progressText = new Text("Strona " + (i + 1) + " z 5");
             progressBarBox.getChildren().add(progressText);
             progressBarBox.setAlignment(javafx.geometry.Pos.CENTER);
             questionBox.getChildren().add(progressBarBox);
@@ -208,10 +208,6 @@ public class HelloApplication extends Application {
                                 traits.get("currentAnimals"),
                                 traits.get("houseType"),
                                 traits.get("housemateCount"),
-                                traits.get("qustionareeAge"),
-                                traits.get("children"),
-                                traits.get("animalsActivity"),
-                                traits.get("preferredSex"),
                                 ownerTraits[0]
                         );
                         System.out.println(idealAnimal.toString());
@@ -222,7 +218,6 @@ public class HelloApplication extends Application {
             }
 
             if (surveyScenes.get(i).getRoot() instanceof Pane pane && pane.getChildren().getFirst() instanceof ScrollPane scrollPane && scrollPane.getContent() instanceof VBox vBox) {
-
                 vBox.getChildren().add(questionBox);
                 vBox.getChildren().add(buttonBox);
             }
