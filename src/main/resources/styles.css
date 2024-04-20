@@ -71,6 +71,18 @@
     -fx-background-color: #7F00FF;
     -jfx-button-type: RAISED;
 }
+
+.secondary-button {
+    -fx-text-fill: #7F00FF;
+    -fx-font-size: 24;
+    -fx-font-weight: bold;
+    -fx-border-radius: 5;
+    -fx-background-radius: 6;
+    -fx-background-color: white;
+    -fx-border-color: #7F00FF;
+    -fx-border-width: 3;
+    -jfx-button-type: RAISED;
+}
 .main-button .jfx-rippler{
     -jfx-rippler-fill: rgba(255,255,255, .87);
 }
