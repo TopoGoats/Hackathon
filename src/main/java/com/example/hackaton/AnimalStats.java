@@ -12,6 +12,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.LinearGradient;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
@@ -76,7 +77,7 @@ public class AnimalStats {
         breed.setFont(Font.font(30));
         dataBox.getChildren().add(breed);
         Text desc = new Text();
-        desc.setText("Why Am I right for you: " + "I am a " + animal.species + " and I am " + animal.age + " years old. I am a " + animal + " and I am " + animal);
+        desc.setText("Why Am I right for you: " + "I am a " + animal.species + " and I am " + animal.age + " years old.");
         desc.setFont(Font.font(30));
         desc.wrappingWidthProperty().bind(scrollPane.widthProperty());
         dataBox.getChildren().add(desc);
@@ -91,6 +92,12 @@ public class AnimalStats {
 
 
         VBox sliderBox = new VBox();
+        sliderBox.setPadding(new Insets(15,0,0,0));
+        Text text100 = new Text("Kompatybilność Ciebie i Zwierzęcia");
+        text100.setWrappingWidth(panel_Width);
+        text100.setTextAlignment(TextAlignment.CENTER);
+        text100.setFont(Font.font("", FontWeight.BOLD, 25));
+        sliderBox.getChildren().add(text100);
 
         Field[] fields = animal.getClass().getDeclaredFields();
 
