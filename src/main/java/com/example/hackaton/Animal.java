@@ -9,7 +9,15 @@ public class Animal {
     String pathToImage;
     boolean fur;
 
+    int sex;
+
     // Sliders
+    int housemateCount;
+    int qustionareeAge;
+    int currentAnimals;
+
+    int children;
+
     int careTimeNeeded;
     int resourcefulness;
     int competentWithAnimals;
@@ -21,18 +29,17 @@ public class Animal {
     int freeTime;
     int activeLifestyle;
     int livingArea;
-    int currentAnimals;
     int houseType;
-    int housemateCount;
-    int qustionareeAge;
-    int children;
     int animalsActivity;
-    int sex;
 
     // Traits
     String ownerTraits;
 
-    public Animal(boolean fur, String name, String species, int age, String pathToImage, int careTimeNeeded, int resourcefulness, int competentWithAnimals, int impulsiveness, int income, int gardenSize, int freeTime, int activeLifestyle, int livingArea, int currentAnimals, int houseType, int housemateCount, int qustionareeAge, int children, int animalsActivity, int sex, String ownerTraits) {
+    public Animal(boolean fur, String name, String species, int age, String pathToImage, int housemateCount, int qustionareeAge, int currentAnimals,int children, int careTimeNeeded, int resourcefulness, int competentWithAnimals, int impulsiveness, int income, int gardenSize, int freeTime, int activeLifestyle, int livingArea,  int houseType, int animalsActivity, int sex, String ownerTraits) {
+        this.housemateCount = housemateCount;
+        this.qustionareeAge = qustionareeAge;
+        this.children = children;
+        this.currentAnimals = currentAnimals;
         this.fur = fur;
         this.name = name;
         this.species = species;
@@ -47,11 +54,7 @@ public class Animal {
         this.freeTime = freeTime;
         this.activeLifestyle = activeLifestyle;
         this.livingArea = livingArea;
-        this.currentAnimals = currentAnimals;
         this.houseType = houseType;
-        this.housemateCount = housemateCount;
-        this.qustionareeAge = qustionareeAge;
-        this.children = children;
         this.animalsActivity = animalsActivity;
         this.sex = sex; //sex.
         this.ownerTraits = ownerTraits;
