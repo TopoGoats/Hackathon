@@ -26,6 +26,13 @@ public class OpenEndedQuestion extends VBox implements FormQuestion {
         return -2137;
     }
 
+    public String getQuestion() {
+        return questionLabel.getText();
+    }
+    public String getActualAnswer() {
+        return textArea.getText();
+    }
+
     @Override
     public String getInfluencedTrait() {
         return "\033[0;31m" + "WARNING WARNING THIS SHOULDN'T BE VISIBLE" + "\033[0m";

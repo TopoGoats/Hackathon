@@ -2,12 +2,10 @@ package com.example.hackaton;
 
 import com.example.hackaton.form.*;
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXProgressBar;
 import javafx.application.Application;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -58,6 +56,7 @@ public class HelloApplication extends Application {
         root.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/styles.css")).toExternalForm());
         stage1.setResizable(false);
         DatabaseController.connectToDatabase();
+        ChatGPTController.setupChatGPT();
         stage = stage1;
         Scene scene = new Scene(root, WIDTH, HEIGHT);
         setupAttributes();
@@ -213,6 +212,19 @@ public class HelloApplication extends Application {
                         );
                         System.out.println(idealAnimal.toString());
                     });
+                    EndScreen.endScreen(idealAnimal, new ArrayList<>());
+
+                    ChatGPTController.interpretOpenEndQuestions();
+
+                    ChatGPTController.chatGPT("Zignoruj wszystkie poprzednie wiadomości. W następnych wiadomościach będziesz" +
+                            "otrzymywał kilka cech zwierzęcia, odeniona w skali od 0 do 10. Dostaniesz też instrukcje, co oznacza 0 na " +
+                            "skali, a co oznacza 10. Poza tym dostaniesz też imię oraz gatunek zwierzęcia. Twoim zadaniem jest stworzyć " +
+                            "bardzo krótki opis zwierzęcia na podstawie dostarczonych danych. Szczególnie " +
+                            "zwróć uwagę na to, dlaczego to zwierzę byłoby świetnym zwierzakiem dowowych. Odpowiedz tylko opisem. " +
+                            "Ani słowia więcej." + idealAnimal.species  + "nazywa się " + idealAnimal.name + " Napisz go w taki sposób, " +
+                            "jakbyś próbował kogoś konkretnie namówić do adoptowania tego zwierzaka. Użyj bezpośredniego zwrotu do adresata" +
+                            "nie podawaj żadnych liczbowych wartości ani danych, które dostaniesz. Masz tylko opisać to zwierzę słownie. " +
+                            "i wymienić kilka jego zalet");
                     Map<Animal, Double> map = DatabaseController.getMatchingAnimals(idealAnimal);
                     ArrayList<Animal> array = new ArrayList<>();
                     for(Animal animal1: map.keySet()){
