@@ -87,4 +87,8 @@ public class Animal {
                 ", ownerTraits=" + ownerTraits   +
                 '}';
     }
+
+    public int getSex() {
+        return sex;
+    }
 }

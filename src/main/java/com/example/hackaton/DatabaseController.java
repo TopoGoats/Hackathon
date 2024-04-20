@@ -52,11 +52,18 @@ public class DatabaseController {
                 );
 
                 double similarity = Algorithms.calculateSimilarity(idealAnimal, animal);
-                if (similarity < 17.5) {
+                boolean isPreferredSex;
+                if (idealAnimal.getSex() > 4) {
+                    isPreferredSex = true;
+                } else {
+                    isPreferredSex = idealAnimal.getSex() == animal.getSex() ||(idealAnimal.getSex() == 3 && animal.getSex() == 1);
+                }
+                boolean isAllergyCompatible = idealAnimal.fur || !animal.fur;
+                System.out.println(animal.name + " " + idealAnimal.getSex() + " " + animal.getSex() + " " + isPreferredSex);
+
+                if (similarity < 1000 && isPreferredSex && isAllergyCompatible) {
                     animals.put(animal, similarity);
                 }
-
-
             }
             double min=1000;
             double max=0;
@@ -70,7 +77,7 @@ public class DatabaseController {
             }
             double finalMin = min;
             double finalMax = max;
-            animals.values().removeIf(v -> v>((finalMin + finalMax)/2));
+            //animals.values().removeIf(v -> v>((finalMin + finalMax)/2));
             Map<Animal, Double> animalsSorted = animals.entrySet()
                     .stream()
                     .sorted(Map.Entry.comparingByValue())
@@ -83,16 +90,10 @@ public class DatabaseController {
 
             return animalsSorted;
 
-
         } catch (SQLException e) {
             System.out.println(e.getMessage() +  e.getCause()+" XDDD");
         }
 
         return animals;
     }
-
-
 }
-
-
-

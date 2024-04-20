@@ -116,16 +116,16 @@ public class HelloApplication extends Application {
             new SingleChoiceQuestion("Czego \"oczekujesz\" od zwierzaka?", List.of( "Ma dobrze smakować", "Towarzystwa", "Motywacji do aktywności", "Chcę go szkolić"), "animalsActivity"),
             new SingleChoiceQuestion("Jaką płeć preferujesz?", List.of("Samiec", "Samica", "Obojętnie", "Inne"), "preferredSex"),
             // break
-                new MultipleChoiceQuestion("Wybierz pięć cech, które do ciebie pasują:", List.of("Odpowiedzialny", "Leniwy", "Pozytywny", "Łatwo się irytuję", "Zapominalski", "Aktywny", "Słomiany zapał", "Zdeterminowany", "Optymistyczny", "Masło")),
-                new SliderQuestion("Ile czasu jesteś w stanie poświęcić zwierzęciu?", "Prawie wcale", "Cały swój czas", "careTimeNeeded"),
-                new SliderQuestion("Jak zaradny jesteś?", "Niezaradny", "Bardzo zaradny", "resourcefulness"),
-                new SliderQuestion("Jak oceniasz swoje kompetencje w opiekowaniu się zwierzętami?", "Brak kompetencji", "Mistrz opieki", "competentWithAnimals"),
-                new SliderQuestion("Jak bardzo porywczy jesteś?", "Totalny chillout", "Dzika bestia", "impulsiveness"),
-                // break
+            new SingleChoiceQuestion("Czy masz alergię sierść zwierząt?", List.of("Tak", "Nie"), "isAllergic"),
+            new MultipleChoiceQuestion("Wybierz pięć cech, które do ciebie pasują:", List.of("Odpowiedzialny", "Leniwy", "Pozytywny", "Łatwo się irytuję", "Zapominalski", "Aktywny", "Słomiany zapał", "Zdeterminowany", "Optymistyczny", "Masło")),
+            new SliderQuestion("Ile czasu jesteś w stanie poświęcić zwierzęciu?", "Prawie wcale", "Cały swój czas", "careTimeNeeded"),
+            new SliderQuestion("Jak zaradny jesteś?", "Niezaradny", "Bardzo zaradny", "resourcefulness"),
+            new SliderQuestion("Jak oceniasz swoje kompetencje w opiekowaniu się zwierzętami?", "Brak kompetencji", "Mistrz opieki", "competentWithAnimals"),
+            // break
+            new SliderQuestion("Jak bardzo porywczy jesteś?", "Totalny chillout", "Dzika bestia", "impulsiveness"),
             new SliderQuestion("Jakie są twoje zarobki?", "Bezdomny", "Milioner", "income"),
             new SliderQuestion("Czy masz ogród? Jak duży?", "Nie mam", "Gigantyczny", "gardenSize"),
             new OpenEndedQuestion("Czego nie lubisz w zwierzętach?"),
-            new OpenEndedQuestion("Jakie są twoje przeciwskazania? (alergie, choroby itp.)"),
             new OpenEndedQuestion("Jakie jest twoje doświadczenie ze zwierzętami?"),
             // break
             new OpenEndedQuestion("Dlaczego chcesz mieć zwierzę?"),
@@ -173,6 +173,7 @@ public class HelloApplication extends Application {
                 JFXButton submitButton = new JFXButton("Zatwierdź");
                 submitButton.setOnAction(event -> {
                     String[] ownerTraits = {""};
+
                     questions.forEach(question -> {
                         if (question instanceof MultipleChoiceQuestion question1) {
                             ownerTraits[0] = question1.getActualAnswer();
@@ -186,11 +187,11 @@ public class HelloApplication extends Application {
                         }
 
                         idealAnimal = new Animal(
-                                true,
+                                traits.get("isAllergic") == 10,
                                 "skibidi ",
                                 "Dog",
                                 10,
-                                0,
+                                traits.get("preferredSex"),
                                 "image.png",
                                 traits.get("housemateCount"),
                                 traits.get("qustionareeAge"),
@@ -205,13 +206,12 @@ public class HelloApplication extends Application {
                                 traits.get("freeTime"),
                                 traits.get("activeLifestyle"),
                                 traits.get("livingArea"),
-                                        traits.get("houseType"),
+                                traits.get("houseType"),
                                 traits.get("animalsActivity"),
                                 ownerTraits[0]
                         );
                     });
                     Map<Animal, Double> map = DatabaseController.getMatchingAnimals(idealAnimal);
-
 
                     ArrayList<Animal> array = new ArrayList<>();
                     for(Animal animal1: map.keySet()){
@@ -249,6 +249,7 @@ public class HelloApplication extends Application {
         traits.put("children", -1);
         traits.put("animalsActivity", -1);
         traits.put("preferredSex", -1);
+        traits.put("isAllergic", -1);
 
         // Traits
         traits.put("responsibility", -1);
