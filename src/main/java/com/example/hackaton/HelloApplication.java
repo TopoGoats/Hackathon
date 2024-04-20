@@ -61,7 +61,7 @@ public class HelloApplication extends Application {
             surveyScenes.add(survScene);
         }
 
-        JFXButton button = new JFXButton("Start survey");
+        JFXButton button = new JFXButton("Rozpocznij ankietę");
         button.getStyleClass().add("main-button");
         button.setOnAction(event -> {
             setupSurvey();
@@ -124,19 +124,19 @@ public class HelloApplication extends Application {
             buttonBox.setSpacing(20);
             buttonBox.setAlignment(javafx.geometry.Pos.CENTER);
             if (i > 0) {
-                JFXButton prevButton = new JFXButton("Previous");
+                JFXButton prevButton = new JFXButton("Poprzedni");
                 prevButton.setOnAction(event -> {
                     stage.setScene(surveyScenes.get(index[0] - 1));
                 });
                 buttonBox.getChildren().add(prevButton);
             }
             if (i < 4) {
-                JFXButton nextButton = new JFXButton("Next");
+                JFXButton nextButton = new JFXButton("Dalej");
                 nextButton.setOnAction(event -> stage.setScene(surveyScenes.get(index[0] + 1)));
                 buttonBox.getChildren().add(nextButton);
             }
             else {
-                JFXButton submitButton = new JFXButton("Submit");
+                JFXButton submitButton = new JFXButton("Zatwierdź");
                 submitButton.setOnAction(event -> {
                     String[] ownerTraits = {""};
                     questions.forEach(question -> {
@@ -147,7 +147,7 @@ public class HelloApplication extends Application {
                     });
                     traits.forEach((key, value) -> {
                         if (value == -1) {
-                            System.out.println("You didn't answer all questions!");
+                            System.out.println("Nie odpowiedziałeś na wszystkie pytania!");
                             return;
                         }
 
