@@ -28,13 +28,13 @@ public class Slider extends VBox {
         text10.setFont(Font.font("", FontWeight.BOLD,15));
         text20.setFont(Font.font("", FontWeight.BOLD,15));
         text10.setTextAlignment(TextAlignment.CENTER);
-        text10.setWrappingWidth(35);
+        text10.setWrappingWidth(50);
         text20.setTextAlignment(TextAlignment.CENTER);
-        text10.setWrappingWidth(35);
+        text20.setWrappingWidth(50);
         text1.setTextAlignment(TextAlignment.CENTER);
         text1.setTextAlignment(TextAlignment.CENTER);
         LinearGradient linearGradient = LinearGradient.valueOf("from 0% 0% to 100% 0%, red  0%, orange 33%, yellowgreen 66%, green 100%");
-        Rectangle rectangle = new Rectangle(AnimalStats.panel_Width-70,AnimalStats.panel_Height/10,linearGradient);
+        Rectangle rectangle = new Rectangle(AnimalStats.panel_Width-100,AnimalStats.panel_Height/10,linearGradient);
         Rectangle rectangle1 = new Rectangle(10,(AnimalStats.panel_Height/10)+10);
         double posX;
         if(!isMoreBad){

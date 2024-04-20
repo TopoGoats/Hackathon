@@ -22,10 +22,11 @@ public class EndScreen {
 
     public static void endScreen(Animal idealAnimal, ArrayList<Animal> animals){
 
+        if(animals.isEmpty()){
         for (int i = 0; i < 80; i++) {
             Animal animal = new Animal(true, "skibidi", "dog", 10, "img.png" ,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"trait");
             animals.add(animal);
-        }
+        }}
         //API call to images and data result
         StackPane root = new StackPane();
         root.setPadding(new Insets(20));
