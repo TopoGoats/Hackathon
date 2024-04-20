@@ -25,6 +25,7 @@ public class DatabaseController {
                 ResultSet result = statement.executeQuery(sql)){
 
             // Loop through the item names in inventory, checking if any matches
+            int index = 0;
             while (result.next()) {
                 Animal animal = new Animal(
                         result.getBoolean("fur"),
@@ -60,9 +61,15 @@ public class DatabaseController {
                 }
                 boolean isAllergyCompatible = idealAnimal.fur || !animal.fur;
 
-                if (similarity < 17.5 && isPreferredSex && isAllergyCompatible) {
+
+                isAllergyCompatible = true;
+                isPreferredSex = true;
+
+                System.out.println((similarity < 17000.5) + " " + !HelloApplication.isBlackListed.get(index));
+                if (similarity < 17000.5 && isPreferredSex && isAllergyCompatible && !HelloApplication.isBlackListed.get(index)) {
                     animals.put(animal, similarity);
                 }
+                index++;
             }
             double min=1000;
             double max=0;
@@ -76,7 +83,7 @@ public class DatabaseController {
             }
             double finalMin = min;
             double finalMax = max;
-            animals.values().removeIf(v -> v>((finalMin + finalMax)/2));
+            //animals.values().removeIf(v -> v>((finalMin + finalMax)/2));
 
             return animals.entrySet()
                     .stream()

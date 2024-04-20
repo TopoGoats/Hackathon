@@ -16,6 +16,8 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static com.example.hackaton.ChatGPTController.chatGPT;
 
@@ -28,6 +30,7 @@ public class HelloApplication extends Application {
     public static Stage stage;
     public static HashMap<String, Integer> traits = new HashMap<>();
     public static Animal idealAnimal;
+    public static ArrayList<Boolean> isBlackListed = new ArrayList<>(23);
 
     public static HashMap<String, String> haszkomora = new HashMap<>();
 
@@ -100,6 +103,10 @@ public class HelloApplication extends Application {
     }
 
     public static void setupSurvey() {
+        for (int i = 0; i < 23; i++) {
+            isBlackListed.add(false);
+        }
+        System.out.println(isBlackListed);
         questions.clear();
         questions.addAll(List.of(
             new SingleChoiceQuestion("Ile średnio masz czasu dziennie?", List.of("Prawie wcale (1-2 godziny)", "Średnio (3-4 godziny)", "Dużo (5-6 godzin)", "Zawsze mam wolne (7+ godzin)"), "freeTime"),
@@ -211,7 +218,7 @@ public class HelloApplication extends Application {
 
                     ChatGPTController.interpretOpenEndQuestions();
 
-                    ChatGPTController.chatGPT("Zignoruj wszystkie poprzednie wiadomości. W następnych wiadomościach będziesz" +
+                   /* ChatGPTController.chatGPT("Zignoruj wszystkie poprzednie wiadomości. W następnych wiadomościach będziesz" +
                             "otrzymywał kilka cech zwierzęcia, odeniona w skali od 0 do 10. Dostaniesz też instrukcje, co oznacza 0 na " +
                             "skali, a co oznacza 10. Poza tym dostaniesz też imię oraz gatunek zwierzęcia. Twoim zadaniem jest stworzyć " +
                             "bardzo krótki opis zwierzęcia na podstawie dostarczonych danych. Szczególnie " +
@@ -219,7 +226,24 @@ public class HelloApplication extends Application {
                             "Ani słowia więcej." + idealAnimal.species  + "nazywa się " + idealAnimal.name + " Napisz go w taki sposób, " +
                             "jakbyś próbował kogoś konkretnie namówić do adoptowania tego zwierzaka. Użyj bezpośredniego zwrotu do adresata" +
                             "nie podawaj żadnych liczbowych wartości ani danych, które dostaniesz. Masz tylko opisać to zwierzę słownie. " +
-                            "i wymienić kilka jego zalet");
+                            "i wymienić kilka jego zalet");*/
+
+                    String output = ChatGPTController.chatGPT("Write me 5 random numbers with the following instructions:" +
+                            "Numbers must be between 0-22. Wrap the numbers in <>. Separate them with ;. Don't write any other word." +
+                            "Example response:" +
+                            "<4;9;12;18;22>");
+
+                    Pattern pattern = Pattern.compile("<(.*?)>");
+                    Matcher matcher = pattern.matcher(output);
+
+                    while (matcher.find()) {
+                        String group = matcher.group(1);
+                        String[] strings = group.split(";");
+                        for (String string : strings) {
+                            isBlackListed.set(Integer.parseInt(string), true);
+                        }
+                    }
+
                     Map<Animal, Double> map = DatabaseController.getMatchingAnimals(idealAnimal);
 
                     ArrayList<Animal> array = new ArrayList<>();

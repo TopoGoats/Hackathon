@@ -51,7 +51,8 @@ public class ChatGPTController {
     }
 
     public static String extractMessageFromJSONResponse(String response) {
-        int start = response.indexOf("content")+ 11;
+        System.out.println("RESPOND: " + response);
+        int start = response.indexOf("content") + 11;
 
         int end = response.indexOf("\"", start);
 
