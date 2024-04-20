@@ -2,15 +2,18 @@ package com.example.hackaton;
 
 import com.example.hackaton.form.*;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXProgressBar;
 import javafx.application.Application;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -40,13 +43,14 @@ public class HelloApplication extends Application {
         Scene scene = new Scene(root, WIDTH, HEIGHT);
         setupAttributes();
 
-        // Create 4 survey scenes for survey questions
+        // Create 5 survey scenes for survey questions
         for (int i = 0; i < 5; i++) {
             GridPane surveyRoot = new GridPane();
             surveyRoot.setAlignment(javafx.geometry.Pos.CENTER);
             // Wrap surveyroot in scrollpane
             ScrollPane scrollPane = new ScrollPane();
             scrollPane.getStyleClass().add("scroll-pane");
+
             VBox content = new VBox();
             content.setPadding(new javafx.geometry.Insets(10, 40, 10, 40));
             scrollPane.setContent(content);
@@ -55,19 +59,25 @@ public class HelloApplication extends Application {
             scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
             scrollPane.setLayoutY(0);
 
-            surveyRoot.getChildren().add(scrollPane);
+            surveyRoot.getChildren().addAll(scrollPane);
             Scene survScene = new Scene(surveyRoot, WIDTH, HEIGHT);
             survScene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/styles.css")).toExternalForm());
             surveyScenes.add(survScene);
         }
-
+        VBox menu = new VBox();
+        menu.setAlignment(javafx.geometry.Pos.CENTER);
+        menu.setSpacing(20);
         JFXButton button = new JFXButton("Start survey");
         button.getStyleClass().add("main-button");
         button.setOnAction(event -> {
             setupSurvey();
             stage.setScene(surveyScenes.getFirst());
         });
-        root.getChildren().add(button);
+        JFXButton exitButton = new JFXButton("Zamknij");
+        exitButton.getStyleClass().add("secondary-button");
+        exitButton.setOnAction(event -> System.exit(0));
+        menu.getChildren().addAll(button, exitButton);
+        root.getChildren().add(menu);
 
         stage.setTitle("Hello!");
         stage.setScene(scene);
@@ -111,6 +121,11 @@ public class HelloApplication extends Application {
         // Add questions and buttons to a VBox and add the VBox to each survey scene
         for (int i = 0; i < 5; i++) {
             VBox questionBox = new VBox();
+            HBox progressBarBox = new HBox();
+            Text progressText = new Text("Page " + (i + 1) + " of 5");
+            progressBarBox.getChildren().add(progressText);
+            progressBarBox.setAlignment(javafx.geometry.Pos.CENTER);
+            questionBox.getChildren().add(progressBarBox);
 
             for (int j = 0; j < 5; j++) {
                 questionBox.getChildren().add((Node) questions.get(i * 5 + j));
@@ -182,13 +197,13 @@ public class HelloApplication extends Application {
                 buttonBox.getChildren().add(submitButton);
             }
 
+
             if (surveyScenes.get(i).getRoot() instanceof Pane pane && pane.getChildren().getFirst() instanceof ScrollPane scrollPane && scrollPane.getContent() instanceof VBox vBox) {
                 vBox.getChildren().add(questionBox);
                 vBox.getChildren().add(buttonBox);
             }
         }
     }
-
     public static void setupAttributes() {
         // Sliders
         traits.put("careTimeNeeded", -1);
