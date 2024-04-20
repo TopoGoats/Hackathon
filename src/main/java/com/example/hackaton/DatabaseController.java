@@ -16,34 +16,6 @@ public class DatabaseController {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );
             System.exit(0);
         }
-        String sql = "CREATE TABLE IF NOT EXISTS animals (     id SERIAL PRIMARY KEY,     fur BOOLEAN,     name VARCHAR(255),     species VARCHAR(255),     age INT,     pathToImage VARCHAR(255),     caretTimeNeeded INT,     resourcefulness INT,     competentWithAnimals INT,     impulsiveness INT,     income INT,     dedication INT,     gardenSize INT,     freeTime INT,     activeLifestyle INT,     livingArea INT,     currentAnimals INT,     houseType INT,     housemateCount INT,     qustionareeAge INT,     children INT,     animalsActivity INT,     responsibility INT,     forgetfulness INT,     shortLivedEnthusiasm INT,     determined INT,     optimistic INT ); ";
-        try (
-            Statement statement = connection.createStatement()) {
-            statement.execute(sql);
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
-    // That's something we use in rendering items in inventory
-    public static List<String> getAllItems() {
-        List<String> items = new ArrayList<>();
-        String sql = "SELECT field_id, filename FROM animals";
-
-        try (
-                Statement statement = connection.createStatement();
-                ResultSet result = statement.executeQuery(sql)){
-
-            // loop through the result set
-            while (result.next()) {
-                if (result.getString("filename") == null) continue;
-                String imagePath = "file:assets/" + result.getString("filename");
-                items.add(imagePath);
-            }
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-        return items;
     }
 
     public static Map<Animal, Double> getMatchingAnimals(Animal idealAnimal) {

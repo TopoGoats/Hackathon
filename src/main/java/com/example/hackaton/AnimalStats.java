@@ -107,7 +107,7 @@ public class AnimalStats {
                 Slider slider = null;
                 try {
                     System.out.println((fieldsIdeal[i].get(idealAnimal).toString())+ " lmao");
-                    slider = new Slider(fieldsIdeal[i].getName().toString(), Integer.parseInt(fieldsIdeal[i].get(idealAnimal).toString()), Integer.parseInt(fields[i].get(animal).toString()), true, 0.0);
+                    slider = new Slider(HelloApplication.haszkomora.get(fieldsIdeal[i].getName().toString()), Integer.parseInt(fieldsIdeal[i].get(idealAnimal).toString()), Integer.parseInt(fields[i].get(animal).toString()), true, 0.0);
                 } catch (IllegalAccessException e) {
                     throw new RuntimeException(e);
                 }
@@ -116,7 +116,7 @@ public class AnimalStats {
                 Slider slider = null;
                 try {
                     System.out.println((fieldsIdeal[i].get(idealAnimal).toString())+ " lmao");
-                    slider = new Slider(fieldsIdeal[i].getName().toString(), Integer.parseInt(fieldsIdeal[i].get(idealAnimal).toString()), Integer.parseInt(fields[i].get(animal).toString()), false, 0.0);
+                    slider = new Slider(HelloApplication.haszkomora.get(fieldsIdeal[i].getName().toString()), Integer.parseInt(fieldsIdeal[i].get(idealAnimal).toString()), Integer.parseInt(fields[i].get(animal).toString()), false, 0.0);
                 } catch (IllegalAccessException e) {
                     throw new RuntimeException(e);
                 }
