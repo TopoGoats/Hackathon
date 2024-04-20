@@ -212,6 +212,8 @@ public class HelloApplication extends Application {
                         System.out.println(idealAnimal.toString());
                     });
                     Map<Animal, Double> map = DatabaseController.getMatchingAnimals(idealAnimal);
+
+
                     ArrayList<Animal> array = new ArrayList<>();
                     for(Animal animal1: map.keySet()){
                         array.addFirst(animal1);
