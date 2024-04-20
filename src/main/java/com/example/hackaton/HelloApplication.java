@@ -18,10 +18,7 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class HelloApplication extends Application {
     public static GridPane root = new GridPane();
@@ -193,12 +190,13 @@ public class HelloApplication extends Application {
                                 "skibidi ",
                                 "Dog",
                                 10,
+                                0,
                                 "image.png",
                                 traits.get("housemateCount"),
                                 traits.get("qustionareeAge"),
                                 traits.get("currentAnimals"),
                                 traits.get("children"),
-                                traits.get("careTimeNeeded"),
+                                5,
                                 traits.get("resourcefulness"),
                                 traits.get("competentWithAnimals"),
                                 traits.get("impulsiveness"),
@@ -209,12 +207,19 @@ public class HelloApplication extends Application {
                                 traits.get("livingArea"),
                                 traits.get("currentAnimals"),
                                 traits.get("houseType"),
-                                traits.get("housemateCount"),
                                 ownerTraits[0]
                         );
                         System.out.println(idealAnimal.toString());
                     });
-                    EndScreen.endScreen(idealAnimal, new ArrayList<>());
+                    Map<Animal, Double> map = DatabaseController.getMatchingAnimals(idealAnimal);
+                    ArrayList<Animal> array = new ArrayList<>();
+                    for(Animal animal1: map.keySet()){
+                        array.addFirst(animal1);
+                    }
+                    for(double num: map.values()){
+                        System.out.println(num+ " lol`1");
+                    }
+                    EndScreen.endScreen(idealAnimal,array);
                 });
                 buttonBox.getChildren().add(submitButton);
             }
