@@ -114,3 +114,24 @@
     -fx-font-size: 16;
     -fx-font-weight: bold;
 }
+
+.heading {
+    -fx-font-size: 36;
+    -fx-font-weight: bold;
+    -fx-padding: 0 0 10 0;
+}
+
+.subheading {
+    -fx-font-size: 24;
+    -fx-font-weight: 600;
+    -fx-padding: 0 0 10 0;
+}
+
+.animal-card {
+    -fx-alignment: center;
+    -fx-background-color: white;
+    -fx-border-radius: 10;
+    -fx-border-color: #7F00FF;
+    -fx-border-width: 3;
+    -fx-padding: 0 0 10 0;
+}

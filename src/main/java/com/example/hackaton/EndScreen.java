@@ -9,6 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
@@ -22,46 +23,63 @@ import java.util.HashMap;
 
 public class EndScreen {
 
-    public static void endScreen(Animal idealAnimal, ArrayList<Animal> animals){
+    public static void endScreen(Animal idealAnimal, ArrayList<Animal> animals) {
 
 
-        //API call to images and data result
-        StackPane root = new StackPane();
-        root.setPadding(new Insets(20));
+        // API call to images and data result
+        GridPane root = new GridPane();
+        root.setAlignment(Pos.CENTER);
         Scene scene = new Scene(root, HelloApplication.WIDTH, HelloApplication.HEIGHT);
-        Stage stage = new Stage();
+        scene.getStylesheets().add("styles.css");
+        VBox vBox = new VBox();
+        vBox.setPadding(new Insets(20, 20, 20, 20));
+        root.getChildren().add(vBox);
 
-        Text text = new Text();
-        text.setFont(Font.font(50));
+        Text text1 = new Text();
+        text1.getStyleClass().add("heading");
+        Text text2 = new Text();
+        text2.getStyleClass().add("subheading");
 
+        VBox textBox = new VBox();
+        textBox.setSpacing(5);
+        textBox.setAlignment(Pos.CENTER);
+        textBox.getChildren().addAll(text1, text2);
 
-        if(animals.isEmpty()){
-            text.setText("We didn't find any animals to fit your criteria. \n We are sorry ;(");
-        }else{
-            text.setText("Here are the animals that match your criteria. \n Click on them to learn more!");
+        if (animals.isEmpty()) {
+            text1.setText("We didn't find any animals to fit your criteria.");
+            text2.setText("We are sorry ;(.");
+        } else {
+            text1.setText("Here are the animals that match your criteria.");
+            text2.setText("Click on the animal to learn more!");
 
         }
-        text.setTextAlignment(TextAlignment.CENTER);
-        root.getChildren().addAll(text);
-        root.setAlignment(text, Pos.TOP_CENTER);
+        vBox.getChildren().add(textBox);
 
-        int stackWidth = 100;
-        int stackHeight = 150;
         ScrollPane scrollPane = new ScrollPane();
-        scrollPane.setMaxWidth(stackWidth*10+(20*10+(4)));
-        scrollPane.setMaxHeight(400);
-        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        scrollPane.setPrefHeight(HelloApplication.HEIGHT);
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-        VBox vBox = new VBox();
-        vBox.setSpacing(20);
-        vBox.setMaxWidth(stackWidth*10+(20*10+(4)));
-        int counter = 0;
-        HBox currentHBOX = new HBox();
-        currentHBOX.setSpacing(20);
-        for (int i = 1; i < animals.size()+1; i++) {
-            Animal animal = animals.get(i-1);
-            StackPane stackPane = new StackPane();
-            stackPane.setPrefSize(stackWidth,stackHeight);
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        GridPane justify = new GridPane();
+        justify.setAlignment(Pos.CENTER);
+        justify.getChildren().add(scrollPane);
+        justify.setPadding(new Insets(50, 0, 0, 0));
+        vBox.getChildren().add(justify);
+        GridPane grid = new GridPane();
+        grid.setPadding(new Insets(10, 10, 10, 10));
+        grid.setVgap(20);
+        grid.setHgap(20);
+
+        scrollPane.setContent(grid);
+
+        int column = 0;
+        int row = 0;
+        for (int i = 1; i < animals.size() + 1; i++) {
+            Animal animal = animals.get(i - 1);
+
+            VBox animalCard = new VBox();
+            animalCard.getStyleClass().add("animal-card");
+            animalCard.setPrefWidth(100);
+            animalCard.setPrefHeight(150);
             ImageView imageView = null;
 
             try {
@@ -70,41 +88,59 @@ public class EndScreen {
                 throw new RuntimeException(e);
             }
 
-            imageView.setFitHeight(stackHeight-30);
-            imageView.setFitWidth(stackWidth);
-            stackPane.getChildren().add(imageView);
-            Text text1 = new Text(animal.name);
-            text1.setFont(Font.font(20));
-            stackPane.getChildren().add(text1);
-            stackPane.setAlignment(imageView,Pos.TOP_CENTER);
-            stackPane.setAlignment(text1, Pos.BOTTOM_CENTER);
-            stackPane.setBorder(new Border(new BorderStroke(Color.BLACK,
-                    BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
-            int num = i-1;
-            stackPane.setOnMouseClicked(mouseEvent -> {
-                AnimalStats.statScreen(idealAnimal,animals.get(num), animals);
+            imageView.setFitHeight(100);
+            imageView.setPreserveRatio(true);
+
+            animalCard.getChildren().add(imageView);
+            Text text;
+            if (row == 0 && column == 0) {
+                text = new Text("\uD83E\uDD47 " + animal.name);
+            }
+            else if (row == 0 && column == 1) {
+                text = new Text("\uD83E\uDD48 " + animal.name);
+            }
+            else if (row == 0 && column == 2) {
+                text = new Text("\uD83E\uDD49 " + animal.name);
+            }
+            else {
+                text = new Text(animal.name);
+            }
+            text.setFont(Font.font("Open Sans", FontWeight.BOLD, 20));
+            animalCard.getChildren().add(text);
+            animalCard.setSpacing(10);
+            int num = i - 1;
+            if (column < calculateNumberOfRows()) {
+                grid.add(animalCard, column, row);
+                column++;
+            } else {
+                column = 0;
+                row++;
+                grid.add(animalCard, column, row);
+            }
+            System.out.println(animal);
+            animalCard.setOnMouseClicked(mouseEvent -> {
+                AnimalStats.statScreen(idealAnimal, animals.get(num), animals);
             });
-            if(i%10==0&&i!=1){
-                currentHBOX.getChildren().add(stackPane);
-                HBox now = currentHBOX;
-                vBox.getChildren().add(now);
-                currentHBOX = new HBox();
-                currentHBOX.setSpacing(20);
-            }else{
-                currentHBOX.getChildren().add(stackPane);
-            }
-            if(i%5!=0&&i==animals.size()){
-                vBox.getChildren().add(currentHBOX);
-            }
 
         }
         scrollPane.setBorder(new Border(new BorderStroke(Color.BLACK,
                 BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
-        scrollPane.setContent(vBox);
-        root.getChildren().add(scrollPane);
-        root.setAlignment(Pos.BOTTOM_CENTER);
 
         HelloApplication.stage.setScene(scene);
         HelloApplication.stage.show();
+    }
+
+    public static int calculateNumberOfRows() {
+        int count = 0;
+        int screenWidth = HelloApplication.WIDTH;
+
+        // Subtract left margin
+        screenWidth-=120;
+        while (screenWidth > 0) {
+            screenWidth -= 220;
+            count++;
+        }
+        return count-1;
+
     }
 }

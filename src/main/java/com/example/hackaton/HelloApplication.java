@@ -50,8 +50,6 @@ public class HelloApplication extends Application {
         haszkomora.put("houseType", "Rodzaj Twojego Domu");
         haszkomora.put("animalsActivity", "Żywość Zwierzięcia");
 
-
-
         root.setAlignment(javafx.geometry.Pos.CENTER);
         root.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/styles.css")).toExternalForm());
         stage1.setResizable(false);
@@ -211,8 +209,6 @@ public class HelloApplication extends Application {
                         );
                     });
                     Map<Animal, Double> map = DatabaseController.getMatchingAnimals(idealAnimal);
-
-
                     ArrayList<Animal> array = new ArrayList<>();
                     for(Animal animal1: map.keySet()){
                         array.addFirst(animal1);
