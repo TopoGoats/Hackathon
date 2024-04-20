@@ -2,7 +2,6 @@ package com.example.hackaton.form;
 
 import com.jfoenix.controls.JFXSlider;
 import javafx.scene.control.Label;
-import javafx.scene.control.Slider;
 import javafx.scene.layout.VBox;
 import javafx.util.StringConverter;
 
@@ -33,7 +32,7 @@ public class SliderQuestion extends VBox implements FormQuestion {
         slider.setMajorTickUnit(1);
         slider.setMinorTickCount(0);
         slider.setSnapToTicks(true);
-        slider.valueProperty().addListener((obs, oldval, newVal) ->
+        slider.valueProperty().addListener((_, _, newVal) ->
                 slider.setValue(newVal.intValue()));
 
         slider.setLabelFormatter(new StringConverter<>() {

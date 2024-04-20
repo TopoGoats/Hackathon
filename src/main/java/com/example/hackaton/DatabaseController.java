@@ -17,7 +17,7 @@ public class DatabaseController {
     }
 
     public static Map<Animal, Double> getMatchingAnimals(Animal idealAnimal) {
-        Map<Animal, Double> animals = new HashMap();
+        Map<Animal, Double> animals = new HashMap<>();
         String sql = "SELECT * FROM animals";
 
         try (
@@ -52,11 +52,17 @@ public class DatabaseController {
                 );
 
                 double similarity = Algorithms.calculateSimilarity(idealAnimal, animal);
-                if (similarity < 17.5) {
+                boolean isPreferredSex;
+                if (idealAnimal.getSex() > 4) {
+                    isPreferredSex = true;
+                } else {
+                    isPreferredSex = idealAnimal.getSex() == animal.getSex() ||(idealAnimal.getSex() == 3 && animal.getSex() == 1);
+                }
+                boolean isAllergyCompatible = idealAnimal.fur || !animal.fur;
+
+                if (similarity < 17.5 && isPreferredSex && isAllergyCompatible) {
                     animals.put(animal, similarity);
                 }
-
-
             }
             double min=1000;
             double max=0;
@@ -71,18 +77,16 @@ public class DatabaseController {
             double finalMin = min;
             double finalMax = max;
             animals.values().removeIf(v -> v>((finalMin + finalMax)/2));
-            Map<Animal, Double> animalsSorted = animals.entrySet()
+
+            return animals.entrySet()
                     .stream()
                     .sorted(Map.Entry.comparingByValue())
                     .collect(Collectors.toMap(
                             Map.Entry::getKey,
                             Map.Entry::getValue,
-                            (oldValue, newValue) -> oldValue,
+                            (oldValue, _) -> oldValue,
                             LinkedHashMap::new
                     )).reversed();
-
-            return animalsSorted;
-
 
         } catch (SQLException e) {
             System.out.println(e.getMessage() +  e.getCause()+" XDDD");
@@ -90,9 +94,4 @@ public class DatabaseController {
 
         return animals;
     }
-
-
 }
-
-
-
