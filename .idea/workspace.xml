@@ -4,34 +4,49 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="682118fa-b16d-4fd2-a632-9207b0e67ecb" name="Changes" comment="feat: fix bug">
+    <list default="true" id="682118fa-b16d-4fd2-a632-9207b0e67ecb" name="Changes" comment="fix: fixed goofy git shenanigans">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hackaton/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hackaton/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hackaton/form/MultipleChoiceQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hackaton/form/MultipleChoiceQuestion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hackaton/form/OpenEndedQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hackaton/form/OpenEndedQuestion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hackaton/form/SingleChoiceQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hackaton/form/SingleChoiceQuestion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hackaton/form/SliderQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hackaton/form/SliderQuestion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="survey-form" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "ccandour"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;ccandour&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/TopoGoats/Hackathon.git",
-    "accountId": "7d2715fc-259c-45df-96b5-c96b03f4aa02"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/TopoGoats/Hackathon.git&quot;,
+    &quot;accountId&quot;: &quot;7d2715fc-259c-45df-96b5-c96b03f4aa02&quot;
   }
-}]]></component>
+}</component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -39,9 +54,9 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="2fKh05cYiACjlhpWUidmrSswqlN" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -53,10 +68,12 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.HelloApplication.executor": "Run",
+    "Application.Unnamed.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "ui-revamp",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/home/pzdanowicz/IdeaProjects/Hackathon",
+    "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -64,11 +81,18 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "proofread",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RunManager">
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.hackaton.HelloApplication" />
+      <module name="Hackaton" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="Hackathon" />
       <method v="2">
@@ -99,8 +123,17 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1713555455456</updated>
-      <workItem from="1713555455461" duration="501000" />
+      <workItem from="1713555455461" duration="17681000" />
     </task>
+    <task id="LOCAL-00001" summary="fix: fixed goofy git shenanigans">
+      <option name="closed" value="true" />
+      <created>1713556042784</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1713556042784</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -108,6 +141,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat: fix bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: fix bug" />
+    <MESSAGE value="fix: fixed goofy git shenanigans" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: fixed goofy git shenanigans" />
   </component>
 </project>

@@ -1,43 +1,63 @@
 package com.example.hackaton;
 
 import com.example.hackaton.form.*;
+import com.jfoenix.controls.JFXButton;
 import javafx.application.Application;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class HelloApplication extends Application {
-    public static Pane root = new Pane();
-    public static final int WIDTH = 1280;
-    public static final int HEIGHT = 720;
+    public static GridPane root = new GridPane();
+    public static int WIDTH = (int) Screen.getPrimary().getBounds().getWidth() * 3 / 4;
+    public static int HEIGHT = (int) Screen.getPrimary().getBounds().getHeight() * 3 / 4;
     public static List<FormQuestion> questions = new ArrayList<>();
-    public static List<Pane> surveyRoots = new ArrayList<>();
     public static List<Scene> surveyScenes = new ArrayList<>();
     public static Stage stage;
 
     @Override
     public void start(Stage stage1) {
+        root.setAlignment(javafx.geometry.Pos.CENTER);
+        root.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/styles.css")).toExternalForm());
+        stage1.setResizable(false);
         DatabaseController.connectToDatabase();
         stage = stage1;
         Scene scene = new Scene(root, WIDTH, HEIGHT);
 
         // Create 4 survey scenes for survey questions
         for (int i = 0; i < 5; i++) {
-            Pane surveyRoot = new Pane();
-            surveyRoots.add(surveyRoot);
-            surveyScenes.add(new Scene(surveyRoot, WIDTH, HEIGHT));
+            GridPane surveyRoot = new GridPane();
+            surveyRoot.setAlignment(javafx.geometry.Pos.CENTER);
+            // Wrap surveyroot in scrollpane
+            ScrollPane scrollPane = new ScrollPane();
+            scrollPane.getStyleClass().add("scroll-pane");
+            VBox content = new VBox();
+            content.setPadding(new javafx.geometry.Insets(10, 40, 10, 40));
+            scrollPane.setContent(content);
+            scrollPane.setMaxSize(WIDTH, HEIGHT);
+            scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+            scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+            scrollPane.setLayoutY(0);
+
+            surveyRoot.getChildren().add(scrollPane);
+            Scene survScene = new Scene(surveyRoot, WIDTH, HEIGHT);
+            survScene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/styles.css")).toExternalForm());
+            surveyScenes.add(survScene);
         }
 
-        Button button = new Button("Start survey");
-        button.setLayoutX(100);
-        button.setLayoutY(100);
+        JFXButton button = new JFXButton("Start survey");
+        button.getStyleClass().add("main-button");
         button.setOnAction(event -> {
             setupSurvey();
             stage.setScene(surveyScenes.getFirst());
@@ -50,11 +70,7 @@ public class HelloApplication extends Application {
     }
 
     public static void setupSurvey() {
-        for (FormQuestion question : questions) {
-            root.getChildren().remove(question);
-        }
         questions.clear();
-
         questions.addAll(List.of(
             new SingleChoiceQuestion("Ile średnio masz czasu dziennie?", List.of("Prawie wcale (1-2 godziny)", "Średnio (3-4 godziny)", "Dużo (5-6 godzin)", "Zawsze mam wolne (7+ godzin)")),
             new SingleChoiceQuestion("Jaki styl życia prowadzisz?", List.of("Nie wychodzę z domu", "Czasem wyjdę na spacer", "Dość aktywny", "Aktywny")),
@@ -90,8 +106,7 @@ public class HelloApplication extends Application {
         // Add questions and buttons to a VBox and add the VBox to each survey scene
         for (int i = 0; i < 5; i++) {
             VBox questionBox = new VBox();
-            questionBox.setLayoutX(WIDTH / 2.0 - 200);
-            questionBox.setLayoutY(100);
+
             for (int j = 0; j < 5; j++) {
                 questionBox.getChildren().add((Node) questions.get(i * 5 + j));
             }
@@ -100,32 +115,33 @@ public class HelloApplication extends Application {
             int[] index = {i};
 
             HBox buttonBox = new HBox();
+            buttonBox.setPadding(new javafx.geometry.Insets(5, 20, 20, 20));
+            buttonBox.setSpacing(20);
+            buttonBox.setAlignment(javafx.geometry.Pos.CENTER);
             if (i > 0) {
-                Button prevButton = new Button("Previous");
-                prevButton.setLayoutX(WIDTH / 2.0 - 150);
-                prevButton.setLayoutY(HEIGHT - 100);
-                prevButton.setOnAction(event -> stage.setScene(surveyScenes.get(index[0] - 1)));
+                JFXButton prevButton = new JFXButton("Previous");
+                prevButton.setOnAction(event -> {
+                    stage.setScene(surveyScenes.get(index[0] - 1));
+                });
                 buttonBox.getChildren().add(prevButton);
             }
             if (i < 4) {
-                Button nextButton = new Button("Next");
-                nextButton.setLayoutX(WIDTH / 2.0 - 50);
-                nextButton.setLayoutY(HEIGHT - 100);
+                JFXButton nextButton = new JFXButton("Next");
                 nextButton.setOnAction(event -> stage.setScene(surveyScenes.get(index[0] + 1)));
                 buttonBox.getChildren().add(nextButton);
             }
             else {
-                Button submitButton = new Button("Submit");
-                submitButton.setLayoutX(WIDTH / 2.0 - 50);
-                submitButton.setLayoutY(HEIGHT - 100);
+                JFXButton submitButton = new JFXButton("Submit");
                 submitButton.setOnAction(event -> {
                     System.out.println("Survey submitted!");
                 });
                 buttonBox.getChildren().add(submitButton);
             }
 
-            questionBox.getChildren().add(buttonBox);
-            surveyRoots.get(i).getChildren().add(questionBox);
+            if (surveyScenes.get(i).getRoot() instanceof Pane pane && pane.getChildren().getFirst() instanceof ScrollPane scrollPane && scrollPane.getContent() instanceof VBox vBox) {
+                vBox.getChildren().add(questionBox);
+                vBox.getChildren().add(buttonBox);
+            }
         }
     }
 
