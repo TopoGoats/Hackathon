@@ -1,0 +1,116 @@
+
+.root {
+    -fx-background-color: white;
+    -fx-font-family: "Open Sans";
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-border-radius: 0;
+}
+
+.jfx-button {
+    -jfx-button-type: FLAT;
+    -fx-background-color: #7F00FF;
+    -fx-border-width: 2;
+    -fx-border-radius: 4;
+    -fx-border-color: #7F00FF;
+    -fx-font-size: 18;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.jfx-secondary-button {
+    -jfx-button-type: FLAT;
+    -fx-background-color: white;
+    -fx-border-width: 2;
+    -fx-border-radius: 4;
+    -fx-text-fill: #7F00FF;
+    -fx-border-color: #7F00FF;
+    -fx-font-size: 18;
+    -fx-font-weight: bold;
+}
+
+.jfx-slider > .track {
+    -fx-pref-height: 350%;
+}
+
+.jfx-slider > .thumb {
+    -fx-background-color: #7F00FF;
+}
+
+.jfx-slider > .colored-track {
+    -fx-background-color: #7F00FF;
+}
+
+.jfx-slider > .animated-thumb {
+    -fx-background-color: transparent;
+    -fx-font-size: 0;
+    -fx-opacity: 0;
+}
+
+
+.question {
+    -fx-font-size: 16;
+    -fx-padding: 28;
+}
+
+.question-label {
+    -fx-font-size: 24;
+    -fx-font-weight: bold;
+    -fx-padding: 0 0 10 0;
+}
+
+.jfx-check-box {
+    -fx-padding: 4;
+    -jfx-checked-color: #7F00FF;
+}
+
+.jfx-radio-button {
+    -fx-padding: 4;
+    -jfx-selected-color: #7F00FF;
+}
+
+.jfx-text-area {
+    -jfx-focus-color: #7F00FF;
+    -fx-pref-height: 60;
+}
+
+.main-button {
+    -fx-font-size: 24;
+    -fx-font-weight: bold;
+    -fx-border-radius: 15;
+    -fx-border-color: #7F00FF;
+    -fx-border-width: 3;
+    -fx-background-color: #7F00FF;
+    -jfx-button-type: RAISED;
+}
+
+.secondary-button {
+    -fx-text-fill: #7F00FF;
+    -fx-font-size: 24;
+    -fx-font-weight: bold;
+    -fx-border-radius: 5;
+    -fx-background-radius: 6;
+    -fx-background-color: white;
+    -fx-border-color: #7F00FF;
+    -fx-border-width: 3;
+    -jfx-button-type: RAISED;
+}
+.main-button .jfx-rippler{
+    -jfx-rippler-fill: rgba(255,255,255, .87);
+}
+
+.answer {
+    -fx-padding: 4;
+}
+
+.progress-text {
+    -fx-fill: grey;
+    -fx-font-size: 16;
+    -fx-font-weight: bold;
+}

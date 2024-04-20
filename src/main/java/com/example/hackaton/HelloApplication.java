@@ -1,57 +1,102 @@
 package com.example.hackaton;
 
 import com.example.hackaton.form.*;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXProgressBar;
 import javafx.application.Application;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 import static com.example.hackaton.ChatGPTController.chatGPT;
 
 public class HelloApplication extends Application {
-    public static Pane root = new Pane();
-    public static final int WIDTH = 1280;
-    public static final int HEIGHT = 720;
+    public static GridPane root = new GridPane();
+    public static int WIDTH = (int) Screen.getPrimary().getBounds().getWidth() * 3 / 4;
+    public static int HEIGHT = (int) Screen.getPrimary().getBounds().getHeight() * 3 / 4;
     public static List<FormQuestion> questions = new ArrayList<>();
-    public static List<Pane> surveyRoots = new ArrayList<>();
     public static List<Scene> surveyScenes = new ArrayList<>();
     public static Stage stage;
     public static HashMap<String, Integer> traits = new HashMap<>();
     public static Animal idealAnimal;
 
+    public static HashMap<String, String> haszkomora = new HashMap<String, String>();
+
     @Override
     public void start(Stage stage1) {
+        haszkomora.put("housemateCount", "Liczba Domowników");
+        haszkomora.put("qustionareeAge", "Kompatybilność z Twoim Wiekiem");
+        haszkomora.put("currentAnimals", "Kompatybilność z Twoimi Zwierzętami");
+        haszkomora.put("children", "Kompatybilność z Dziećmi");
+        haszkomora.put("careTimeNeeded", "Potrzeba Opieki");
+        haszkomora.put("resourcefulness", "Twoja Zaradność");
+        haszkomora.put("competentWithAnimals", "Twoje Kompetencje ze Zwierzętami");
+        haszkomora.put("impulsiveness", "Twoja Impulsywność");
+        haszkomora.put("income", "Twój Dochód");
+        haszkomora.put("gardenSize", "Twój Rozmiar Ogrodu");
+        haszkomora.put("freeTime", "Twój Czas Wolny");
+        haszkomora.put("activeLifestyle", "Twoja Aktywność");
+        haszkomora.put("livingArea", "Twoja Domowa Przestrzeń");
+        haszkomora.put("houseType", "Rodzaj Twojego Domu");
+        haszkomora.put("animalsActivity", "Żywość Zwierzięcia");
+
+
+
+        root.setAlignment(javafx.geometry.Pos.CENTER);
+        root.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/styles.css")).toExternalForm());
+        stage1.setResizable(false);
         DatabaseController.connectToDatabase();
         stage = stage1;
         Scene scene = new Scene(root, WIDTH, HEIGHT);
         setupAttributes();
 
-        // Create 4 survey scenes for survey questions
+        // Create 5 survey scenes for survey questions
         for (int i = 0; i < 5; i++) {
-            Pane surveyRoot = new Pane();
-            surveyRoots.add(surveyRoot);
-            surveyScenes.add(new Scene(surveyRoot, WIDTH, HEIGHT));
+            GridPane surveyRoot = new GridPane();
+            surveyRoot.setAlignment(javafx.geometry.Pos.CENTER);
+            // Wrap surveyroot in scrollpane
+            ScrollPane scrollPane = new ScrollPane();
+            scrollPane.getStyleClass().add("scroll-pane");
+
+            VBox content = new VBox();
+            content.setPadding(new javafx.geometry.Insets(10, 40, 10, 40));
+            scrollPane.setContent(content);
+            scrollPane.setMaxSize(WIDTH, HEIGHT);
+            scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+            scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+            scrollPane.setLayoutY(0);
+
+            surveyRoot.getChildren().addAll(scrollPane);
+            Scene survScene = new Scene(surveyRoot, WIDTH, HEIGHT);
+            survScene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/styles.css")).toExternalForm());
+            surveyScenes.add(survScene);
         }
-
-//        System.out.println(chatGPT("give me the definition af a dog"));
-
-        Button button = new Button("Start survey");
-        button.setLayoutX(100);
-        button.setLayoutY(100);
+        VBox menu = new VBox();
+        menu.setAlignment(javafx.geometry.Pos.CENTER);
+        menu.setSpacing(20);
+        JFXButton button = new JFXButton("Rozpocznij ankietę");
+        button.getStyleClass().add("main-button");
         button.setOnAction(event -> {
             setupSurvey();
             stage.setScene(surveyScenes.getFirst());
         });
-        root.getChildren().add(button);
+        JFXButton exitButton = new JFXButton("Zamknij");
+        exitButton.getStyleClass().add("secondary-button");
+        exitButton.setOnAction(event -> System.exit(0));
+        menu.getChildren().addAll(button, exitButton);
+        root.getChildren().add(menu);
 
         stage.setTitle("Hello!");
         stage.setScene(scene);
@@ -59,11 +104,7 @@ public class HelloApplication extends Application {
     }
 
     public static void setupSurvey() {
-        for (FormQuestion question : questions) {
-            root.getChildren().remove(question);
-        }
         questions.clear();
-
         questions.addAll(List.of(
             new SingleChoiceQuestion("Ile średnio masz czasu dziennie?", List.of("Prawie wcale (1-2 godziny)", "Średnio (3-4 godziny)", "Dużo (5-6 godzin)", "Zawsze mam wolne (7+ godzin)"), "freeTime"),
             new SingleChoiceQuestion("Jaki styl życia prowadzisz?", List.of("Nie wychodzę z domu", "Czasem wyjdę na spacer", "Dość aktywny", "Aktywny"), "activeLifestyle"),
@@ -99,8 +140,13 @@ public class HelloApplication extends Application {
         // Add questions and buttons to a VBox and add the VBox to each survey scene
         for (int i = 0; i < 5; i++) {
             VBox questionBox = new VBox();
-            questionBox.setLayoutX(WIDTH / 2.0 - 200);
-            questionBox.setLayoutY(100);
+            HBox progressBarBox = new HBox();
+            Text progressText = new Text("Strona " + (i + 1) + " z 5");
+            progressText.getStyleClass().add("progress-text");
+            progressBarBox.getChildren().add(progressText);
+            progressBarBox.setAlignment(javafx.geometry.Pos.CENTER);
+            questionBox.getChildren().add(progressBarBox);
+
             for (int j = 0; j < 5; j++) {
                 questionBox.getChildren().add((Node) questions.get(i * 5 + j));
             }
@@ -109,24 +155,24 @@ public class HelloApplication extends Application {
             int[] index = {i};
 
             HBox buttonBox = new HBox();
+            buttonBox.setPadding(new javafx.geometry.Insets(5, 20, 20, 20));
+            buttonBox.setSpacing(20);
+            buttonBox.setAlignment(javafx.geometry.Pos.CENTER);
             if (i > 0) {
-                Button prevButton = new Button("Previous");
-                prevButton.setLayoutX(WIDTH / 2.0 - 150);
-                prevButton.setLayoutY(HEIGHT - 100);
-                prevButton.setOnAction(event -> stage.setScene(surveyScenes.get(index[0] - 1)));
+                JFXButton prevButton = new JFXButton("Poprzedni");
+                prevButton.getStyleClass().add("jfx-secondary-button");
+                prevButton.setOnAction(event -> {
+                    stage.setScene(surveyScenes.get(index[0] - 1));
+                });
                 buttonBox.getChildren().add(prevButton);
             }
             if (i < 4) {
-                Button nextButton = new Button("Next");
-                nextButton.setLayoutX(WIDTH / 2.0 - 50);
-                nextButton.setLayoutY(HEIGHT - 100);
+                JFXButton nextButton = new JFXButton("Dalej");
                 nextButton.setOnAction(event -> stage.setScene(surveyScenes.get(index[0] + 1)));
                 buttonBox.getChildren().add(nextButton);
             }
             else {
-                Button submitButton = new Button("Submit");
-                submitButton.setLayoutX(WIDTH / 2.0 - 50);
-                submitButton.setLayoutY(HEIGHT - 100);
+                JFXButton submitButton = new JFXButton("Zatwierdź");
                 submitButton.setOnAction(event -> {
                     String[] ownerTraits = {""};
                     questions.forEach(question -> {
@@ -137,7 +183,7 @@ public class HelloApplication extends Application {
                     });
                     traits.forEach((key, value) -> {
                         if (value == -1) {
-                            System.out.println("You didn't answer all questions!");
+                            System.out.println("Nie odpowiedziałeś na wszystkie pytania!");
                             return;
                         }
 
@@ -146,7 +192,12 @@ public class HelloApplication extends Application {
                                 "skibidi ",
                                 "Dog",
                                 10,
+                                0,
                                 "image.png",
+                                traits.get("housemateCount"),
+                                traits.get("qustionareeAge"),
+                                traits.get("currentAnimals"),
+                                traits.get("children"),
                                 traits.get("careTimeNeeded"),
                                 traits.get("resourcefulness"),
                                 traits.get("competentWithAnimals"),
@@ -156,24 +207,29 @@ public class HelloApplication extends Application {
                                 traits.get("freeTime"),
                                 traits.get("activeLifestyle"),
                                 traits.get("livingArea"),
-                                traits.get("currentAnimals"),
-                                traits.get("houseType"),
-                                traits.get("housemateCount"),
-                                traits.get("qustionareeAge"),
-                                traits.get("children"),
+                                        traits.get("houseType"),
                                 traits.get("animalsActivity"),
-                                traits.get("preferredSex"),
                                 ownerTraits[0]
                         );
                         System.out.println(idealAnimal.toString());
                     });
-                    EndScreen.endScreen(idealAnimal, new ArrayList<>());
+                    Map<Animal, Double> map = DatabaseController.getMatchingAnimals(idealAnimal);
+                    ArrayList<Animal> array = new ArrayList<>();
+                    for(Animal animal1: map.keySet()){
+                        array.addFirst(animal1);
+                    }
+                    for(double num: map.values()){
+                        System.out.println(num+ " lol`1");
+                    }
+                    EndScreen.endScreen(idealAnimal,array);
                 });
                 buttonBox.getChildren().add(submitButton);
             }
 
-            questionBox.getChildren().add(buttonBox);
-            surveyRoots.get(i).getChildren().add(questionBox);
+            if (surveyScenes.get(i).getRoot() instanceof Pane pane && pane.getChildren().getFirst() instanceof ScrollPane scrollPane && scrollPane.getContent() instanceof VBox vBox) {
+                vBox.getChildren().add(questionBox);
+                vBox.getChildren().add(buttonBox);
+            }
         }
     }
 

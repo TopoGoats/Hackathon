@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="682118fa-b16d-4fd2-a632-9207b0e67ecb" name="Changes" comment="feat: added button answer funni and changed a bunch of shit" />
+    <list default="true" id="682118fa-b16d-4fd2-a632-9207b0e67ecb" name="Changes" comment="feat: added button answer funni and changed a bunch of shit">
+      <change beforePath="$PROJECT_DIR$/19.jpeg" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,25 +18,36 @@
         <entry key="$PROJECT_DIR$" value="survey-form" />
       </map>
     </option>
-  </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
-      </MavenGeneralSettings>
-    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;proofread&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.HelloApplication.executor": "Run",
+    "Application.Unnamed.executor": "Run",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/Wiktor/IdeaProjects/Hackathon/src/main/resources/photos",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "proofread"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Wiktor\IdeaProjects\Hackathon\src\main\resources\photos" />
+      <recent name="C:\Users\Wiktor\IdeaProjects\Hackathon" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.hackaton.HelloApplication" />
+      <module name="Hackaton" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="TaskManager">
     <task id="LOCAL-00001" summary="resolved merge goofiness">
       <option name="closed" value="true" />
@@ -52,7 +65,29 @@
       <option name="project" value="LOCAL" />
       <updated>1713569260738</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="fix merge goofy">
+      <option name="closed" value="true" />
+      <created>1713574701407</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1713574701407</updated>
+    </task>
+    <task id="LOCAL-00004" summary="feat: added button answer funni and changed a bunch of shit">
+      <created>1713585560316</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1713585560316</updated>
+    </task>
+    <task id="LOCAL-00005" summary="feat: added button answer funni and changed a bunch of shit">
+      <created>1713586207793</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1713586207793</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -69,6 +104,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat: fix bug" />
     <MESSAGE value="resolved merge goofiness" />
+    <MESSAGE value="database update i guess" />
+    <MESSAGE value="fix merge goofy" />
     <MESSAGE value="feat: added button answer funni and changed a bunch of shit" />
     <option name="LAST_COMMIT_MESSAGE" value="feat: added button answer funni and changed a bunch of shit" />
   </component>

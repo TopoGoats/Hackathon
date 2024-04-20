@@ -15,14 +15,16 @@ import javafx.stage.Stage;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class EndScreen {
+
     public static void endScreen(Animal idealAnimal, ArrayList<Animal> animals){
-        for (int i = 0; i < 80; i++) {
-            Animal animal = new Animal(true, "skibidi", "dog", 10, "img.png" ,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"trait");
-            animals.add(animal);
-        }
+
+
         //API call to images and data result
         StackPane root = new StackPane();
         root.setPadding(new Insets(20));
@@ -37,13 +39,6 @@ public class EndScreen {
             text.setText("We didn't find any animals to fit your criteria. \n We are sorry ;(");
         }else{
             text.setText("Here are the animals that match your criteria. \n Click on them to learn more!");
-            /*ImageView imageView = new ImageView();
-            try {
-                imageView = new ImageView(new Image(new FileInputStream("img.png")));
-            } catch (FileNotFoundException e) {
-                throw new RuntimeException(e);
-            }
-            root.getChildren().add(imageView);*/
 
         }
         text.setTextAlignment(TextAlignment.CENTER);
@@ -69,11 +64,15 @@ public class EndScreen {
             StackPane stackPane = new StackPane();
             stackPane.setPrefSize(stackWidth,stackHeight);
             ImageView imageView = null;
+            System.out.println(animal.pathToImage);
+
+
             try {
                 imageView = new ImageView(new Image(new FileInputStream(animal.pathToImage)));
             } catch (FileNotFoundException e) {
                 throw new RuntimeException(e);
             }
+
             imageView.setFitHeight(stackHeight-30);
             imageView.setFitWidth(stackWidth);
             stackPane.getChildren().add(imageView);
@@ -86,7 +85,7 @@ public class EndScreen {
                     BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
             int num = i-1;
             stackPane.setOnMouseClicked(mouseEvent -> {
-                AnimalStats.statScreen(animals.get(num), animals);
+                AnimalStats.statScreen(idealAnimal,animals.get(num), animals);
             });
             if(i%10==0&&i!=1){
                 currentHBOX.getChildren().add(stackPane);
