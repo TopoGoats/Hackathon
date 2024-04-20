@@ -1,0 +1,80 @@
+
+.root {
+    -fx-background-color: white;
+    -fx-font-family: "Open Sans";
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-border-radius: 0;
+}
+
+.jfx-button {
+    -jfx-button-type: FLAT;
+    -fx-background-color: #7F00FF;
+    -fx-font-size: 16;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.jfx-slider > .track {
+    -fx-pref-height: 350%;
+}
+
+.jfx-slider > .thumb {
+    -fx-background-color: #7F00FF;
+}
+
+.jfx-slider > .colored-track {
+    -fx-background-color: #7F00FF;
+}
+
+.jfx-slider > .animated-thumb {
+    -fx-background-color: transparent;
+    -fx-font-size: 0;
+    -fx-opacity: 0;
+}
+
+.question {
+    -fx-padding: 16
+}
+
+.question-label {
+    -fx-font-size: 16;
+    -fx-font-weight: bold;
+    -fx-padding: 0 0 8 0;
+}
+
+.jfx-check-box {
+    -fx-padding: 4;
+    -jfx-checked-color: #7F00FF;
+}
+
+.jfx-radio-button {
+    -fx-padding: 4;
+    -jfx-selected-color: #7F00FF;
+}
+
+.jfx-text-area {
+    -jfx-focus-color: #7F00FF;
+    -fx-pref-height: 60;
+}
+
+.main-button {
+    -fx-font-size: 24;
+    -fx-font-weight: bold;
+    -fx-border-radius: 10;
+    -fx-background-color: #7F00FF;
+    -jfx-button-type: RAISED;
+}
+.main-button .jfx-rippler{
+    -jfx-rippler-fill: rgba(255,255,255, .87);
+}
+
+.answer {
+    -fx-padding: 2;
+}
