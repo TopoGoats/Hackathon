@@ -35,7 +35,7 @@ public class Animal {
     // Traits
     String ownerTraits;
 
-    public Animal(boolean fur, String name, String species, int age, String pathToImage, int housemateCount, int qustionareeAge, int currentAnimals,int children, int careTimeNeeded, int resourcefulness, int competentWithAnimals, int impulsiveness, int income, int gardenSize, int freeTime, int activeLifestyle, int livingArea,  int houseType, int animalsActivity, int sex, String ownerTraits) {
+    public Animal(boolean fur, String name, String species, int age,int sex, String pathToImage, int housemateCount, int qustionareeAge, int currentAnimals,int children, int careTimeNeeded, int resourcefulness, int competentWithAnimals, int impulsiveness, int income, int gardenSize, int freeTime, int activeLifestyle, int livingArea,  int houseType, int animalsActivity, String ownerTraits) {
         this.housemateCount = housemateCount;
         this.qustionareeAge = qustionareeAge;
         this.children = children;

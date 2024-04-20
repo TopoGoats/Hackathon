@@ -31,13 +31,13 @@ public class Algorithms {
 
     public static int calculateTraitsSimilarity(String idealTraits, String currentTraits) {
         List<String> idealTraitsList = Arrays.asList(idealTraits.split(", "));
-        List<String> currentTraitsList = Arrays.asList(currentTraits.split(", "));
+        //List<String> currentTraitsList = Arrays.asList(currentTraits.split(", "));
         Set idealSet = new HashSet<>(idealTraitsList);
-        Set currentSet = new HashSet<>(currentTraitsList);
+        //Set currentSet = new HashSet<>(currentTraitsList);
         int idealSetLength = idealSet.size();
-        idealSet.removeAll(currentTraitsList);
-        currentSet.removeAll(idealTraitsList);
-        return (idealSet.size()/idealSetLength*5 + currentSet.size()*5/idealSetLength) * 2;
+        //idealSet.removeAll(currentTraitsList);
+        //currentSet.removeAll(idealTraitsList);
+        return (idealSet.size()/idealSetLength*5 ) * 2;
     }
 
 }

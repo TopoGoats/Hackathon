@@ -1,10 +1,7 @@
 package com.example.hackaton;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class DatabaseController {
     static Connection connection;
@@ -33,22 +30,22 @@ public class DatabaseController {
                         result.getString("name"),
                         result.getString("species"),
                         result.getInt("age"),
+                        result.getInt("sex"),
                         result.getString("pathToImage"),
+                        result.getInt("housemateCount"),
+                        result.getInt("qustionareeAge"),
+                        result.getInt("currentAnimals"),
+                        result.getInt("children"),
                         result.getInt("careTimeNeeded"),
                         result.getInt("resourcefulness"),
                         result.getInt("competentWithAnimals"),
                         result.getInt("impulsiveness"),
                         result.getInt("income"),
-                        result.getInt("dedication"),
                         result.getInt("gardenSize"),
                         result.getInt("freeTime"),
                         result.getInt("activeLifestyle"),
                         result.getInt("livingArea"),
-                        result.getInt("currentAnimals"),
                         result.getInt("houseType"),
-                        result.getInt("housemateCount"),
-                        result.getInt("qustionareeAge"),
-                        result.getInt("children"),
                         result.getInt("animalsActivity"),
                         result.getString("ownerTraits")
                 );
@@ -57,11 +54,24 @@ public class DatabaseController {
                 if (similarity < 1000) {
                     animals.put(animal, similarity);
                 }
+                Object[] a = animals.entrySet().toArray();
+                Arrays.sort(a, new Comparator() {
+                    public int compare(Object o1, Object o2) {
+                        return ((Map.Entry<Animal, Double>) o2).getValue()
+                                .compareTo(((Map.Entry<Animal, Double>) o1).getValue());
+                    }
+                });
+                for (Object e : a) {
+                    System.out.println(((Map.Entry<Animal, Double>) e).getKey() + " : "
+                            + ((Map.Entry<Animal, Double>) e).getValue());
+                }
             }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println(e.getMessage() +  e.getCause()+" XDDD");
         }
 
         return animals;
     }
+
 }
+

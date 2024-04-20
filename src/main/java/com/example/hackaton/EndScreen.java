@@ -15,12 +15,15 @@ import javafx.stage.Stage;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class EndScreen {
 
     public static void endScreen(Animal idealAnimal, ArrayList<Animal> animals){
+
 
         //API call to images and data result
         StackPane root = new StackPane();
@@ -61,11 +64,15 @@ public class EndScreen {
             StackPane stackPane = new StackPane();
             stackPane.setPrefSize(stackWidth,stackHeight);
             ImageView imageView = null;
+            System.out.println(animal.pathToImage);
+
+
             try {
                 imageView = new ImageView(new Image(new FileInputStream(animal.pathToImage)));
             } catch (FileNotFoundException e) {
                 throw new RuntimeException(e);
             }
+
             imageView.setFitHeight(stackHeight-30);
             imageView.setFitWidth(stackWidth);
             stackPane.getChildren().add(imageView);
