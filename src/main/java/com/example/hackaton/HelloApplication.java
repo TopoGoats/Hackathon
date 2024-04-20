@@ -2,12 +2,9 @@ package com.example.hackaton;
 
 import com.example.hackaton.form.*;
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXProgressBar;
 import javafx.application.Application;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -17,7 +14,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.util.*;
 
 public class HelloApplication extends Application {
@@ -30,7 +26,7 @@ public class HelloApplication extends Application {
     public static HashMap<String, Integer> traits = new HashMap<>();
     public static Animal idealAnimal;
 
-    public static HashMap<String, String> haszkomora = new HashMap<String, String>();
+    public static HashMap<String, String> haszkomora = new HashMap<>();
 
     @Override
     public void start(Stage stage1) {
@@ -86,13 +82,13 @@ public class HelloApplication extends Application {
         menu.setSpacing(20);
         JFXButton button = new JFXButton("Rozpocznij ankietę");
         button.getStyleClass().add("main-button");
-        button.setOnAction(event -> {
+        button.setOnAction(_ -> {
             setupSurvey();
             stage.setScene(surveyScenes.getFirst());
         });
         JFXButton exitButton = new JFXButton("Zamknij");
         exitButton.getStyleClass().add("secondary-button");
-        exitButton.setOnAction(event -> System.exit(0));
+        exitButton.setOnAction(_ -> System.exit(0));
         menu.getChildren().addAll(button, exitButton);
         root.getChildren().add(menu);
 
@@ -159,19 +155,17 @@ public class HelloApplication extends Application {
             if (i > 0) {
                 JFXButton prevButton = new JFXButton("Poprzedni");
                 prevButton.getStyleClass().add("jfx-secondary-button");
-                prevButton.setOnAction(event -> {
-                    stage.setScene(surveyScenes.get(index[0] - 1));
-                });
+                prevButton.setOnAction(_ -> stage.setScene(surveyScenes.get(index[0] - 1)));
                 buttonBox.getChildren().add(prevButton);
             }
             if (i < 4) {
                 JFXButton nextButton = new JFXButton("Dalej");
-                nextButton.setOnAction(event -> stage.setScene(surveyScenes.get(index[0] + 1)));
+                nextButton.setOnAction(_ -> stage.setScene(surveyScenes.get(index[0] + 1)));
                 buttonBox.getChildren().add(nextButton);
             }
             else {
                 JFXButton submitButton = new JFXButton("Zatwierdź");
-                submitButton.setOnAction(event -> {
+                submitButton.setOnAction(_ -> {
                     String[] ownerTraits = {""};
 
                     questions.forEach(question -> {
@@ -180,7 +174,7 @@ public class HelloApplication extends Application {
                         }
                         traits.put(question.getInfluencedTrait() , question.getAnswer());
                     });
-                    traits.forEach((key, value) -> {
+                    traits.forEach((_, value) -> {
                         if (value == -1) {
                             System.out.println("Nie odpowiedziałeś na wszystkie pytania!");
                             return;

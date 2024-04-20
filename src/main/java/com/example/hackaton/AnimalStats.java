@@ -3,19 +3,14 @@ package com.example.hackaton;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.LinearGradient;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
-import javafx.stage.Stage;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -34,7 +29,6 @@ public class AnimalStats {
         
         StackPane root = new StackPane();
         Scene scene = new Scene(root, HelloApplication.WIDTH, HelloApplication.HEIGHT);
-        Stage stage = new Stage();
 
         Text text = new Text();
         text.setFont(Font.font(50));
@@ -44,10 +38,10 @@ public class AnimalStats {
 
         text.setTextAlignment(TextAlignment.CENTER);
         root.getChildren().addAll(text);
-        root.setAlignment(text, Pos.TOP_CENTER);
+        StackPane.setAlignment(text, Pos.TOP_CENTER);
 
         root.setPadding(new Insets(20));
-        ImageView imageView = null;
+        ImageView imageView;
         try {
             imageView = new ImageView(new Image(new FileInputStream(animal.pathToImage)));
         } catch (FileNotFoundException e) {
@@ -69,7 +63,7 @@ public class AnimalStats {
         sex.setFont(Font.font(30));
         dataBox.getChildren().add(sex);
         Text age = new Text();
-        age.setText("Wiek: " + Integer.toString(animal.age));
+        age.setText("Wiek: " + animal.age);
         age.setFont(Font.font(30));
         dataBox.getChildren().add(age);
         Text breed = new Text();
@@ -111,19 +105,19 @@ public class AnimalStats {
         }
 
         for (int i = 6; i < fields.length-1; i++) {
-            if(i>=6&&i<=9){
-                Slider slider = null;
+            if(i<=9){
+                Slider slider;
                 try {
-                    slider = new Slider(HelloApplication.haszkomora.get(fieldsIdeal[i].getName().toString()), Integer.parseInt(fieldsIdeal[i].get(idealAnimal).toString()), Integer.parseInt(fields[i].get(animal).toString()), true, 0.0);
+                    slider = new Slider(HelloApplication.haszkomora.get(fieldsIdeal[i].getName()), Integer.parseInt(fieldsIdeal[i].get(idealAnimal).toString()), Integer.parseInt(fields[i].get(animal).toString()), true);
                 } catch (IllegalAccessException e) {
                     throw new RuntimeException(e);
                 }
 
                 sliderBox.getChildren().add(slider);
             }else{
-                Slider slider = null;
+                Slider slider;
                 try {
-                    slider = new Slider(HelloApplication.haszkomora.get(fieldsIdeal[i].getName().toString()), Integer.parseInt(fieldsIdeal[i].get(idealAnimal).toString()), Integer.parseInt(fields[i].get(animal).toString()), false, 0.0);
+                    slider = new Slider(HelloApplication.haszkomora.get(fieldsIdeal[i].getName()), Integer.parseInt(fieldsIdeal[i].get(idealAnimal).toString()), Integer.parseInt(fields[i].get(animal).toString()), false);
                 } catch (IllegalAccessException e) {
                     throw new RuntimeException(e);
                 }
@@ -139,35 +133,21 @@ public class AnimalStats {
         scrollPane2.setMaxSize(panel_Width,panel_Height*2);
         vBox2.getChildren().add(scrollPane2);
 
-
         StackPane stackPane10 = new StackPane();
         stackPane10.setMaxSize(30,30);
         Text text1 = new Text("←");
         text1.setFont(Font.font(40));
         stackPane10.getChildren().add(text1);
-        stackPane10.setOnMouseClicked(mouseEvent -> {
-            EndScreen.endScreen(HelloApplication.idealAnimal, animals);
-        });
+        stackPane10.setOnMouseClicked(_ -> EndScreen.endScreen(HelloApplication.idealAnimal, animals));
         root.getChildren().add(stackPane10);
-        root.setAlignment(stackPane10,Pos.TOP_LEFT);
-
+        StackPane.setAlignment(stackPane10,Pos.TOP_LEFT);
 
         hBox.getChildren().addAll(vBox1,vBox2);
         hBox.setMaxHeight(panel_Height+panel_Height);
         root.getChildren().add(hBox);
         hBox.setMaxWidth(panel_Width*2+(20));
-        root.setAlignment(hBox,Pos.BOTTOM_CENTER);
+        StackPane.setAlignment(hBox,Pos.BOTTOM_CENTER);
         HelloApplication.stage.setScene(scene);
         HelloApplication.stage.show();
-
-
-    }
-
-    public static Image getAIphoto(Animal animal){
-        try {
-            return new Image(new FileInputStream(animal.pathToImage));
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
     }
 }
