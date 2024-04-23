@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="682118fa-b16d-4fd2-a632-9207b0e67ecb" name="Changes" comment="wip, generating the prompts kinda works, need to shorten it tho">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hackaton/AnimalStats.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hackaton/AnimalStats.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hackaton/ChatGPTController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hackaton/ChatGPTController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hackaton/EndScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hackaton/EndScreen.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +37,9 @@
     &quot;accountId&quot;: &quot;7231cf09-8fee-40a9-99f9-5c9c582dc746&quot;
   }
 }</component>
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="true" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -48,12 +55,20 @@
   "keyToString": {
     "Application.HelloApplication.executor": "Run",
     "Application.Unnamed.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
     "git-widget-placeholder": "master",
+    "go.import.settings.migrated": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Wiktor/IdeaProjects/Hackathon/src/main/resources/photos",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "proofread"
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "proofread",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -120,6 +135,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1713587413619</updated>
+      <workItem from="1713856709005" duration="1464000" />
     </task>
     <task id="LOCAL-00006" summary="wip, generating the prompts kinda works, need to shorten it tho">
       <option name="closed" value="true" />
@@ -131,6 +147,9 @@
     </task>
     <option name="localTasksCounter" value="7" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -151,5 +170,9 @@
     <MESSAGE value="feat: added button answer funni and changed a bunch of shit" />
     <MESSAGE value="wip, generating the prompts kinda works, need to shorten it tho" />
     <option name="LAST_COMMIT_MESSAGE" value="wip, generating the prompts kinda works, need to shorten it tho" />
+  </component>
+  <component name="VgoProject">
+    <integration-enabled>false</integration-enabled>
+    <settings-migrated>true</settings-migrated>
   </component>
 </project>
