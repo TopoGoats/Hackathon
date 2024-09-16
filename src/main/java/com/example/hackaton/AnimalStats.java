@@ -64,8 +64,9 @@ public class AnimalStats {
         HBox dataBox = new HBox();
         dataBox.setSpacing(15);
         dataBox.setAlignment(Pos.CENTER_LEFT);
+        leftPanel.getChildren().add(dataBox);
         VBox scrollBox = new VBox();
-        scrollBox.setSpacing(30);
+        scrollBox.setSpacing(10);
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setPrefWidth(leftPanel.getWidth());
         scrollPane.setMaxHeight(HEIGHT*10);
@@ -94,7 +95,12 @@ public class AnimalStats {
         name.getStyleClass().add("data-text");
         StringBuilder prompt = new StringBuilder();
 
-    prompt.append(" - ile czasu potrzebuje zwierzę - 0 oznacza prawie nic, 10 oznacza dużo").append(animal.careTimeNeeded);
+
+        prompt.append("imię: ").append(animal.name);
+        prompt.append(" - płeć: ").append(animal.sex);
+        prompt.append(" - wiek: ").append(animal.age);
+        prompt.append(" - gatunek: ").append(animal.species);
+        prompt.append(" - ile czasu potrzebuje zwierzę - 0 oznacza prawie nic, 10 oznacza dużo").append(animal.careTimeNeeded);
         prompt.append(" - wymagana zaradność - 0 oznacza, że potrzeba mu bardzo zaradnego opiekuna, 10 oznacza, że opiekun nie musi być tak zaradny").append(animal.resourcefulness);
         prompt.append(" - jak dużym wyzwaniem dla właściciela jest to zwierzę - 0 oznacza, że jest wielkim wyzwaniem, 10, że nie stanowi wyzwania").append(animal.competentWithAnimals);
         prompt.append(" - jak impulsywny może być właściciel - 0 oznacza, że właściciel nie może być w ogóle impulsywny, 10 znaczy, że może być nieco impulsywny").append(animal.impulsiveness);
@@ -109,11 +115,11 @@ public class AnimalStats {
         prompt.append(" - ile lat powinien mieć właściciel - 0 znaczy, że właściciel powinien być młodszy, 10 znaczy, że właściciel powinien być starszy").append(animal.qustionareeAge);
         prompt.append(" - liczba dzieci - 0 znaczy, że zwierze nie chce dzieci, 10 znaczy, że zwierzę je lubI").append(animal.children);
         prompt.append(" - aktywność fizyczna - 0 oznacza, że zwierzę nie jest zbyt aktywne, 10 znaczy, że jest bardzo aktywne").append(animal.animalsActivity);
-        desc.setText(ChatGPTController.chatGPT(prompt.toString()));
-        desc.setFont(Font.font(12));
+        prompt.append(" Na podstawie tych danych wygeneruj opis zwierzęcia. Postaraj się przekonać użytkownika, że jest to dla niego idealne zwierze. Uwzględnij imię zwirzęcia, staraj się napisać swobodny opis, nie tylko suchą listę cech. Bardzo swobodny, tak jakbyś był pracownikiem schroniska i rozmawiał z zainteresowanym klientem. Nie używaj żadnego formatowania tekstu, list ani niczego. Nie używaj enterów");
+        desc.setText(ChatGPTController.chatGPT(prompt.toString()).replace("\\n", "\n"));
+        desc.setFont(Font.font(16));
 
         desc.wrappingWidthProperty().bind(scrollPane.widthProperty());
-        scrollBox.getChildren().add(dataBox);
         scrollBox.getChildren().add(desc);
 
         VBox rightPanel = new VBox();
@@ -125,7 +131,6 @@ public class AnimalStats {
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scrollPane.setContent(scrollBox);
-        // TODO: Change this
         leftPanel.getChildren().add(scrollPane);
 
 
