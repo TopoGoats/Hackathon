@@ -62,9 +62,6 @@ public class DatabaseController {
                 boolean isAllergyCompatible = idealAnimal.fur || !animal.fur;
 
 
-                isAllergyCompatible = true;
-                isPreferredSex = true;
-
                 System.out.println((similarity < 17000.5) + " " + !HelloApplication.isBlackListed.get(index));
                 if (similarity < 17000.5 && isPreferredSex && isAllergyCompatible && !HelloApplication.isBlackListed.get(index)) {
                     animals.put(animal, similarity);
